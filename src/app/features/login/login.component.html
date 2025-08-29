@@ -1,0 +1,26 @@
+<div class="login-container">
+  <h3>Введіть авторизаційний код 'acode' </h3>
+  <form [formGroup]="loginForm" (ngSubmit)="submit()">
+    <input
+      formControlName="code"
+      type="text"
+      placeholder="xxx-xxx"
+      maxlength="6"
+      minlength="6"
+    />
+    <button type="button" (click)="submit()" [disabled]="loading() || !loginForm.valid">Увійти</button>
+  </form>
+
+  @if(errorMessage()){
+    <div class="error">{{ errorMessage() }}</div>
+  }
+
+  <div class="instruction">
+   <p>Як отримати код:</p>
+    <ol>
+     <li>Ви маєте бути зареєстрованим у тікенономіці</li>
+     <li>Відкрийте <a href="https://t.me/tossa_tickets_bot">telegram-бота</a> та виконайте команду /acode.</li>
+     <li>Скопіюйте код і введіть його у поле</li>
+    </ol>
+  </div>
+</div>

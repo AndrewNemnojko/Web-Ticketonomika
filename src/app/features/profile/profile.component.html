@@ -1,0 +1,70 @@
+<div class="profile-block">
+  @if(user(); as u) {
+    <div class="card profile">
+      <img [src]="u.avatar || '/svg/image.svg'" alt="avatar" class="avatar">
+      <div class="values">
+        <h2>{{ u.name }}</h2>
+        <p>{{ u.username }}</p>
+        <p>Паспорт: {{ u.passportId }}</p>
+        <p>Статус: {{ u.legalStatus }}</p>
+      </div>
+    </div>
+
+    @if(u.materials!.length) {
+      <div class="card balance">
+        <h3 class="title">Баланс</h3>
+        <div class="values">
+          <section class="capital">
+            <h3>Капітал: {{ u.tickets + this.totalMaterialsCost || 0 }} <img class="ticket" src="/svg/ticket.svg"></h3>
+          </section>
+          <section class="tickets">
+            <h3>Тікетів: {{ u.tickets || 0 }} <img class="ticket" src="/svg/ticket.svg"></h3>
+          </section>
+          <section class="materials">
+            <h3>Матеріали: {{ this.totalMaterialsCost }} <img class="ticket" src="/svg/ticket.svg"></h3>
+            <ul class="materials-list">
+              @for(mat of u.materials; track mat.name) {
+                <li class="material">
+                  <div class="display">
+                    <img class="icon" [src]="mat.name | iconMaterial">
+                    <span class="name">{{ mat.name }}</span>
+                  </div>
+                  <span class="amount">x {{ mat.amount }}</span>
+                </li>
+              }
+            </ul>
+          </section>
+        </div>
+      </div>
+    }
+
+    @if(u.awards!.length) {
+      <div class="card awards">
+        <h3 class="title">Нагороди</h3>
+        <div class="values">
+          <ul class="awards-list">
+            @for(award of u.awards; track award.id) {
+              <li><h4>{{ award.name }}</h4></li>
+            }
+          </ul>
+        </div>
+      </div>
+    }
+
+    @if(u.jobs!.length) {
+      <div class="card jobs">
+        <h3 class="title">Посади</h3>
+        <div class="values">
+          <ul class="jobs-list">
+            @for(job of u.jobs; track job.id) {
+              <li><h4>{{ job.name }}</h4></li>
+            }
+          </ul>
+        </div>
+      </div>
+    }
+  } 
+  @else {
+    <p>Пуп-уп...</p>
+  }
+</div>

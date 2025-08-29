@@ -1,0 +1,117 @@
+.profile-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-direction: column;
+  .card{
+    padding: 30px;
+    border-radius: 20px;
+    width: 100%;
+    box-shadow: 0px 0px 10px #0000000f;
+    background-color: #ffffff07;
+    img.ticket{
+      height: 15px;
+    }
+    h3.title{
+      margin-bottom: 5px;
+      text-align: center;
+      padding: 10px;
+      padding-top: 0px;
+      font-size: large;
+    }
+    .values{
+      display: flex;
+      gap: 10px;
+      flex-direction: column;
+    }
+    ul{
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      gap: 10px;
+      li{
+        padding: 10px;
+        border-bottom: 1px solid #ffffff3b;
+        border-radius: 10px;
+        background-color: #0000000d;
+      }
+    }
+    section{
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      h3{
+        padding: 5px;
+      }
+    }
+    &.profile {
+      display: flex; 
+      align-items: center;
+      gap: 40px;
+      img {
+        width: 120px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.568);
+        object-fit: cover;   
+      }     
+    }
+    &.balance{
+                     
+      .materials{
+        padding: 5px;
+        border-radius: 10px;
+        background-color: #0000000f;
+        align-items: center;
+        ul.materials-list{
+          padding: 5px 0px;  
+          gap: 5px;
+          flex-direction: row;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .material {     
+          display: flex;
+          background-color: #ffffff00;
+          border: none;
+          align-items: center;
+          justify-content: space-between;
+          flex-direction: column;  
+          span.amount {
+            border: 1px solid #ffffff42;
+            background-color: #ffffff0a;
+            padding: 5px;
+            border-radius: 10px;
+          }
+          .display{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 70px;
+            img.icon{
+              width: 25px;
+              height: 25px;
+              object-fit: cover;
+            }
+          }       
+        }
+      }         
+    }  
+  }
+}
+@media (max-width: 600px) {
+  .profile-block {  
+   
+    .card{ 
+      padding: 20px;
+      &.profile{
+        img{
+          width: 90px;
+        }
+      }
+      
+    }
+  }
+}
