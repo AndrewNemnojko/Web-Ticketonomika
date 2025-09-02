@@ -28,8 +28,25 @@ aside, nav, footer, header, section, main {
 	display: block;
 }
 
-h1, h2, h3, h4, h5 {
-	font-weight: 400;
+.h1 {
+  font-weight: 700; /* Bold */
+  font-size: 28px;
+}
+
+.h2 {
+  font-weight: 600; /* SemiBold */
+  font-size: 24px;
+}
+
+.body {
+  font-weight: 400; /* Regular */
+  font-size: 18px;
+}
+
+.button {
+  font-weight: 500; /* Medium */
+  font-size: 18px;
+  text-transform: uppercase;
 }
 
 ul, ul li {

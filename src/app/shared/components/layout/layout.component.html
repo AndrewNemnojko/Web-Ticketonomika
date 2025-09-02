@@ -2,18 +2,23 @@
   <div class="container header-container">
     <div routerLink="ticketonomika" class="logo-section">
       <img src="/svg/ticket.svg" alt="Logo">
-      <h5>Ticketonomika</h5>
+      <h4>Ticketonomics</h4>
     </div>
     <nav>
-      <button class="btn-menu" (click)="toggleMenu()">
+      <button 
+        class="btn-menu" 
+        (click)="toggleMenu()"   
+      >
         <img 
-        [src]="menuOpen ? '/svg/close.svg' : '/svg/menu.svg'"  
-        alt="Menu"
-        class="menu-icon"
-        [class.rotated]="menuOpen"
+          [src]="menuOpen ? '/svg/close.svg' : '/svg/menu.svg'"  
+          alt="Menu"
+          class="menu-icon"
+          [class.rotated]="menuOpen"
         >
       </button>
-      <app-nav-bar class="compact-nav {{menuOpen ? 'open' : ''}}">
+      <app-nav-bar 
+        class="compact-nav {{menuOpen ? 'open' : ''}}"
+      >
       </app-nav-bar>
     </nav>
   </div>

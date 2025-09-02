@@ -5,16 +5,17 @@ export const USER_MOCK: User = {
   username: '@capri_xj',
   name: 'anton kolot',
   avatar: 'https://telegram.im/img/capri_xj',
-  tickets: 1240,
+  tickets: 1323,
   passportId: '07G1',
   legalStatus: 'Citizen',
   materials: [
-    { name: 'sapphire', amount: 210, price: 3, emoji: '' },
-    { name: 'emerald', amount: 105, price: 2, emoji: '' },
-    { name: 'ruby', amount: 75, price: 4, emoji: '' },
-    { name: 'quartz', amount: 88, price: 4, emoji: '' },
-    { name: 'obsidian', amount: 43, price: 5, emoji: '' },
-    { name: 'amethyst', amount: 125, price: 2, emoji: '' }
+    { name: 'sapphire', amount: 424, price: 0.56, emoji: '' },
+    { name: 'emerald', amount: 171, price: 0.66, emoji: '' },
+    { name: 'ruby', amount: 192, price: 0.61, emoji: '' },
+    { name: 'quartz', amount: 191, price: 0.87, emoji: '' },
+    { name: 'obsidian', amount: 148, price: 0.53, emoji: '' },
+    { name: 'amethyst', amount: 193, price: 0.59, emoji: '' },
+    { name: 'amber', amount: 660, price: 0.64, emoji: '' }
   ],
   awards: [
     { id: 1, name: '🎖 [DF-L3] Орден Захисника Спільноти «Знищувач Маліків»', issuance: new Date(), description: 'Орден Захисника Спільноти' },

@@ -13,15 +13,15 @@ export const routes: Routes = [
         path: '',
         component: LayoutComponent,
         children: [      
-            {path: 'ticketonomika',component: PresentationComponent, data: {title: 'Home'}},
+            {path: 'info',component: PresentationComponent, data: {title: 'Info'}},
             {path: 'signin',component: LoginComponent, data: {title: 'Signin'}},
-            {path: '', redirectTo: 'ticketonomika', pathMatch: 'full'},
             {path: 'profile', component: ProfileComponent, data: {title: 'Profile'}},
             {path: 'drewards', component: DrewardComponent, data: {title: 'Daily Reward'}},
-            {path: '', redirectTo: 'profile', pathMatch: 'full'},
-            { path: 'forbidden', component: ForbiddenComponent },
-            { path: 'imbad', component: ServerErrorComponent },
-            { path: '**', component: NotfoundComponent },
+
+            {path: '', redirectTo: 'info', pathMatch: 'full'},
+            {path: 'forbidden', component: ForbiddenComponent },
+            {path: 'imbad', component: ServerErrorComponent },
+            {path: '**', component: NotfoundComponent },
         ]
     },
 ];

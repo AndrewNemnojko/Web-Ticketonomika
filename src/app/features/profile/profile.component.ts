@@ -19,6 +19,8 @@ export class ProfileComponent{
 
   get totalMaterialsCost(): number {
     const u = this.user();
-    return u ? u.materials.reduce((sum, m) => sum + m.price * m.amount, 0) : 0;
+    return u 
+    ? Math.round(u.materials.reduce((sum, m) => sum + m.price * m.amount, 0))
+    : 0;
   }
 }

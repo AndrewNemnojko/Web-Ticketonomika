@@ -28,9 +28,13 @@ header {
       height: 40px;
     }
 
-    h5 {
-      font-size: xx-large;
+    h4{   
+      font-family: 'Inter';
+      font-weight: 700; 
+      font-size: 24px;  
+      margin: 0;  
     }
+
     &:hover{
       cursor: pointer;
       color: #e3ff55;

@@ -20,9 +20,9 @@ export class NavBarComponent {
     { label: 'Щоденний бокс', icon: '/svg/box.svg', route: 'drewards', visible: this.isAuth },
     { label: 'Рейтинги (soon)', icon: '/svg/stat.svg', route: 'stats', visible: this.isAuth },
     { label: 'Матеріали (soon)', icon: '/svg/material.svg', route: 'materials', visible: this.isAuth },
-    { label: 'Біржа (soon)', icon: '/svg/burse.svg', route: 'burse', visible: this.isAuth },
+    { label: 'Біржа (soon)', icon: '/svg/market.svg', route: 'market', visible: this.isAuth },
     { label: 'Казино (зачинено)', icon: '/svg/casino.svg', route: 'casino', visible: this.isAuth },
     { label: 'Увійти', icon: '/svg/key.svg', route: 'signin', visible: !this.isAuth },
-    { label: 'Про тікетономіку', icon: '/svg/info.svg', route: 'ticketonomika', visible: true },
+    { label: 'Про тікетономіку', icon: '/svg/info.svg', route: 'info', visible: true },
   ];
 }

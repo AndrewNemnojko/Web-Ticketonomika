@@ -5,7 +5,7 @@ section{
     border-radius: 30px;
     margin-bottom: 3rem; 
     h3.title {
-        font-size: x-large;
+        font-size: 20px;
         text-align: center;
     }
     .summary-body {
@@ -36,7 +36,7 @@ section{
             display: flex;
             gap: 15px;
             flex: 1;
-            font-size: larger;
+            font-size: 15px;
             flex-direction: column;
             line-height: 25px;
         }
@@ -65,14 +65,14 @@ section{
             .text {
                 z-index: 2;
                 padding: 270px 70px 70px 70px;
-                background: linear-gradient(0deg, #3f2e7a, #376a7a2e);
+                background: linear-gradient(0deg, #312a5c, #ffffff00);
                 text-shadow: 0 0 10px #1717177d;
             }
         }
     }
     &.contact{
         p{
-            font-size: larger;
+            font-size: 15px;
             text-align: center;
         }
     }
@@ -80,15 +80,9 @@ section{
 
 
 @media (max-width: 700px){
-    section{
-        h3.title{
-            font-size: large;
-        }
+    section{        
         .summary-body{
-            padding: 40px;
-            .text{
-                font-size: medium;
-            }
+            padding: 40px;            
         }
         &.summary{
             .summary-body{

@@ -1,9 +1,9 @@
 <nav>
   @for(link of links; track link.label) {
     @if(link.visible !== false) {
-      <a routerLink="{{link.route}}" routerLinkActive="active-link">
-        <img class="icon" [src]="link.icon" alt="{{link.label}}">
-        <span>{{ link.label }}</span>
+      <a routerLink="{{link.route}}" routerLinkActive="active-link" [title]="link.label">
+        <img class="icon" [src]="link.icon" [alt]="link.label">
+        <span class="nav-label">{{ link.label }}</span>
       </a>
     }
   }
