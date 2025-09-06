@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { PresentationComponent } from './features/info/info.component';
 import { LoginComponent } from './features/login/login.component';
 import { ProfileComponent } from './features/profile/profile.component';
-import { DrewardComponent } from './features/dreward/dreward.component';
+import { DrewardComponent } from './features/dreward/components/dreward.component';
 import { NotfoundComponent } from './features/errors/notfound.component';
 import { LayoutComponent } from './shared/components/layout/layout.component';
 import { ForbiddenComponent } from './features/errors/forbidden.component';

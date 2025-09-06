@@ -39,6 +39,7 @@ section{
             font-size: 15px;
             flex-direction: column;
             line-height: 25px;
+            font-weight: 500;
         }
         a{
             color: #5ce2ff;
@@ -66,7 +67,7 @@ section{
                 z-index: 2;
                 padding: 270px 70px 70px 70px;
                 background: linear-gradient(0deg, #312a5c, #ffffff00);
-                text-shadow: 0 0 10px #1717177d;
+                font-weight: 500;
             }
         }
     }
@@ -87,6 +88,7 @@ section{
         &.summary{
             .summary-body{
                 .text{
+                    background: #312a5ca1;
                     padding: 40px;                
                 }
             }

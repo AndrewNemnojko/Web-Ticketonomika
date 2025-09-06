@@ -9,13 +9,13 @@ export const USER_MOCK: User = {
   passportId: '07G1',
   legalStatus: 'Citizen',
   materials: [
-    { name: 'sapphire', amount: 424, price: 0.56, emoji: '' },
-    { name: 'emerald', amount: 171, price: 0.66, emoji: '' },
-    { name: 'ruby', amount: 192, price: 0.61, emoji: '' },
-    { name: 'quartz', amount: 191, price: 0.87, emoji: '' },
-    { name: 'obsidian', amount: 148, price: 0.53, emoji: '' },
-    { name: 'amethyst', amount: 193, price: 0.59, emoji: '' },
-    { name: 'amber', amount: 660, price: 0.64, emoji: '' }
+    { name: 'sapphire', amount: 424, price: 0.563},
+    { name: 'emerald', amount: 171, price: 0.665},
+    { name: 'ruby', amount: 192, price: 0.611},
+    { name: 'quartz', amount: 191, price: 0.876},
+    { name: 'obsidian', amount: 148, price: 0.532},
+    { name: 'amethyst', amount: 193, price: 0.594},
+    { name: 'amber', amount: 660, price: 0.647}
   ],
   awards: [
     { id: 1, name: '🎖 [DF-L3] Орден Захисника Спільноти «Знищувач Маліків»', issuance: new Date(), description: 'Орден Захисника Спільноти' },

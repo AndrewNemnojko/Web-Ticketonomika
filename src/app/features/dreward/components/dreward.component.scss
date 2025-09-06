@@ -1,0 +1,167 @@
+h3.title {
+  text-align: center;
+}
+
+.dreward-block {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  .card{
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #473d8763;
+    &.today-reward {
+    position: relative;
+    display: flex;
+    overflow: hidden; 
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    height: 170px;
+
+    .slot-container {
+      width: calc(var(--reward-size) * var(--visible-count));
+      height: calc(var(--reward-size) + 20px);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      border-radius: 12px;
+      position: relative;
+      transition: all .3s ease-in-out;
+
+      &.fade-out {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      .rewards-strip {
+        display: flex;
+
+        .reward {
+          width: var(--reward-size);
+          height: var(--reward-size);
+          text-align: center;
+          border-right: 1px solid #ffffff16;
+          border-left: 1px solid #ffffff16;
+          padding: 5px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          color: #fff;
+          transition: transform 0.3s, background 0.3s;
+
+          img {
+            aspect-ratio: 1;
+            width: 40px;
+            height: 40px;
+          }
+        }
+      }
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .chest {
+        cursor: pointer;
+        text-align: center;
+        transition: transform 0.3s ease, filter 0.3s ease;
+        img{
+            height: 100px;
+            aspect-ratio: 1;
+        }
+        &:hover {
+          transform: scale(0.95);
+        }
+
+        .open-btn {
+          font-size: 15px;    
+        }
+      }
+
+      .reward-final {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        animation: fadeIn 0.6s ease forwards;
+        h3{
+            color: #ffffffa8;
+            font-size: 13px;
+        }
+        .reward-card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          border-radius: 12px;
+          font-weight: bold;
+          transform: scale(0.9);
+          animation: popIn 0.6s ease forwards;
+
+          img {
+            width: 50px;
+            height: 50px;
+          }
+        }
+      }
+    }
+  }
+  &.history-rewards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    h3{
+        text-align: center;
+    }
+    .history-strip {
+        display: flex;
+        gap: 5px;
+        flex-direction: column;
+
+        .history-item {
+            border-radius: 8px;
+            display: flex;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.1019607843);
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            .reward{
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                img {
+                    width: 25px;
+                    height: 25px;
+                    aspect-ratio: 1;
+                }
+            }
+            
+        }
+    }
+  }
+  }
+  
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.9); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

@@ -28,6 +28,24 @@
   font-style: normal;
 }
 
+:root {
+  --reward-size: 60px;
+  --visible-count: 5;
+}
+
+@media screen and (max-width: 799px) {
+  :root {
+    --reward-size: 60px;
+    --visible-count: 5;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  :root {
+    --reward-size: 70px;
+    --visible-count: 7;
+  }
+}
 
 body {
   background: #2a2357;

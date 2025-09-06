@@ -56,7 +56,7 @@ nav {
     height: 20px;
   }
 }
-@media (max-width: 1310px){
+@media (max-width: 1160px){
   nav {
     
     width: 70px;
@@ -71,7 +71,7 @@ nav {
     }
   }
 }
-@media (max-width: 880px) {
+@media (max-width: 780px) {
   nav {
     width: 500px;
     display: grid;
@@ -79,7 +79,7 @@ nav {
     padding: 0 20px;
     border: 1px solid #ffffff00;
     a {
-      background-color: #ffffff08;
+      background-color: #473d8763;
       width: 100%;
       height: auto;
       padding: 20px;
