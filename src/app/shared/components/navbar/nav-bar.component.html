@@ -1,4 +1,4 @@
-<nav>
+<nav class="{{isAuth ? '' : 'unauth'}}">
   @for(link of links; track link.label) {
     @if(link.visible !== false) {
       <a routerLink="{{link.route}}" routerLinkActive="active-link" [title]="link.label">

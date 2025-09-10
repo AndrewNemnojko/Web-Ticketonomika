@@ -5,7 +5,7 @@ header {
   top: 0;
   padding: 20px 0;
   width: 100%;
-  backdrop-filter: blur(20px);
+  background: linear-gradient(180deg, #2a2357, transparent);
   z-index: 20;
 
   .container.header-container {
@@ -31,7 +31,9 @@ header {
     h4{   
       font-family: 'Inter';
       font-weight: 700; 
-      font-size: 24px;  
+      width: 250px;
+      font-size: 34px;
+      text-align: center;  
       margin: 0;  
     }
 
@@ -45,12 +47,72 @@ header {
     display: flex;
     align-items: center;
     position: relative;
+    gap: 10px;
 
-    .btn-menu {
-      padding: 10px;
+    .context-menu{
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      .lang{
+        display: flex;
+        background-color: #383168;
+        height: 50px;
+        border-radius: 15px;
+        border: 1px solid white;
+        overflow: hidden;
+        
+        button.current{
+          background-color:  rgb(255, 255, 255);
+          color: black;
+        }
+      }
+      button{
+        display: flex;
+        border: none;
+        width: 50px;
+        border-radius: 15px;
+        justify-content: center;
+        align-items: center;
+        background-color: #383168;
+        border-radius: 0;
+        &:hover{
+          background-color: #433d6b;
+          cursor: pointer;
+        }
+      }
+      a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+        border: 1px solid white;
+        height: 50px;
+        background-color: #383168;
+        padding: 12px;
+        &:hover{
+          background-color: #433d6b;
+          cursor: pointer;
+        }
+      }
+    }
+
+    button {
+      &.btn-apps{
+        display: none;          
+      }
+      &:hover{
+        background-color: #ffffff0d;
+      }
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      padding: 12px;
       display: none;
       background: none;
-      border: none;
+      border: 1px solid white;
+      transition: all .2s ease-in-out;
       cursor: pointer;      
       .menu-icon{
         transition: all .2s ease-in-out;
@@ -58,12 +120,14 @@ header {
           transform: rotate(180deg);
         }
       }
-      
     }
   }
 }
 .compact-nav {
   display: none;
+  &.unauth{
+    display: block;
+  }
 }
 .main-container {
   display: flex;
@@ -93,20 +157,33 @@ header {
     width: 100%;
     max-width: 850px;
     flex-direction: column;
+    min-height: 100%;
+   
+    &.unauth{
+      max-width: 1050px;
+    }
   }
   router-outlet {
     flex: 1;
     min-width: 0;
   }
 }
+@media (max-width: 1160px){
+  header{
+    background-color: #ffffff00;
+    backdrop-filter: blur(20px);
+  }
+}
+
 
 @media (max-width: 980px){
   .main-container{
     .route{
       max-width: 650px;
     }
-  }
+  }  
 }
+
 @media (max-width: 780px) {
   .main-container {
     padding-top: 85px;
@@ -117,6 +194,10 @@ header {
       &.hide{
         top: 10px;
         opacity: 0;
+      }
+      &.mute{
+        opacity: 0.5;
+        filter: blur(3px);
       }
     }
     .dekstop-nav {
@@ -155,18 +236,77 @@ header {
     }
   header {
     padding: 10px 0px;
+    
     .logo-section{
       img{
         height: 30px;
         width: 30px;
       }
-      h5{
+      h4{
+        width: max-content;
         font-size: x-large;
       }
     }
     nav {
-      .btn-menu {
-        display: block;
+      
+      button{
+        background-color: #473d8763;
+       
+        &.btn-menu {
+          display: block;
+        }
+        &.btn-apps{
+          display: block;
+        }
+      } 
+      &.unauth{
+        button{
+          &.btn-menu, &.btn-apps{
+            display: none;
+          }
+        }
+        .context-menu, .compact-nav{
+          display: flex;
+          position: relative;
+          opacity: 1;
+          top: 0px;
+          width: max-content;
+          pointer-events: all;
+          padding: 0px;
+          height: 50px;
+        }
+        .lang{
+          button{
+             width: 40px;
+          }
+        }
+      }  
+      .context-menu{
+        position: absolute;
+        opacity: 0;
+        right: 0px;
+        transition: all .2s ease-in-out;
+        top: 60px;
+        flex-direction: column;
+        pointer-events: none;
+        width: 175px;
+        &.open{
+          top: 70px;
+          opacity: 1;
+          pointer-events: all;
+        }
+        div, button, a{
+          height: 50px;
+          width: 100%;
+          border-radius: 15px;
+        }    
+        .lang{
+          button{
+            border-radius: 0;
+          }
+          height: 50px;         
+        }
+        
       }
     }
   }

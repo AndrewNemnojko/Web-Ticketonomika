@@ -37,7 +37,7 @@ export class LoginComponent {
     this.authService.login(code).subscribe({
       next: () => {
         this.loading.set(false);
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/profile']);
       },
       error: (err) => {
         this.loading.set(false);

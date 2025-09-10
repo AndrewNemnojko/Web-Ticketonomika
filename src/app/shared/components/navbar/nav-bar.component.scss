@@ -6,7 +6,31 @@ nav {
   width: 250px;
   max-height: 100%;
   overflow-y: scroll;
+  background-color: #473d8763;
+  border-radius: 20px;
   padding: 10px;
+  &.unauth{
+    display: flex;
+    padding: 0;
+    flex-direction: row-reverse;
+    width: max-content;
+    height: 50px;
+    border-radius: 0;
+    background: #ffffff00;
+    
+    a{
+      width: 50px;
+      padding: 12px;
+      border: 1px solid white;
+      margin: 0;
+      &.active-link{
+        display: none;
+      }
+      span{
+        display: none;
+      }
+    }
+  }
   &::-webkit-scrollbar {
     height: 0px;
     width: 2px;
@@ -21,7 +45,7 @@ nav {
     align-items: center;
     justify-content: center;
     transition: all .3s ease-in-out;
-    background-color: transparent;
+    
     border: 1px solid rgba(255, 255, 255, 0);
 
     span {
@@ -45,10 +69,6 @@ nav {
       background-color: #ffffff0e;
       cursor: pointer;
     }
-
-    &:active {
-      transform: scale(0.98) translateY(2px);
-    }
   }
 
   .icon {
@@ -57,13 +77,10 @@ nav {
   }
 }
 @media (max-width: 1160px){
-  nav {
-    
+  nav { 
     width: 70px;
     a {
-      &:active {
-        transform: scale(0.98) ;
-      }
+      
       width: 50px;
       span {
         display: none;
@@ -73,6 +90,7 @@ nav {
 }
 @media (max-width: 780px) {
   nav {
+    background-color: #ffffff00;
     width: 500px;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -86,6 +104,9 @@ nav {
       span {
         display: block;
       }
+    }
+    &.unauth{
+
     }
   }
 }

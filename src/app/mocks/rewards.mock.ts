@@ -2,8 +2,8 @@ import { Reward } from '../shared/models/reward.model';
 
 // Сегодняшняя награда
 export const MOCK_TODAY_REWARD: Reward = {
-  material: 'ruby',
-  amount: 10,
+  material: 'amber',
+  amount: 18,
   date: new Date(), // можно null для фейковых наград
 };
 
@@ -15,6 +15,8 @@ export const MOCK_REWARDS_HISTORY: Reward[] = [
   { material: 'sapphire', amount: 7, date: new Date('2025-09-03') },
   { material: 'amber', amount: 12, date: new Date('2025-09-04') },
   { material: 'ruby', amount: 5, date: new Date('2025-09-05') },
+  { material: 'obsidian', amount: 11, date: new Date('2025-09-06') },
+  { material: 'amethyst', amount: 19, date: new Date('2025-09-02') }
 ];
 
 // Функции для работы с моками

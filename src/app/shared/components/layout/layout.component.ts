@@ -5,6 +5,7 @@ import { filter } from 'rxjs';
 import { NavBarComponent } from '../navbar/nav-bar.component';
 import { UserService } from '../../../core/services/user.service';
 import { NavLink } from '../../models/nav-link.model';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-public-board',
@@ -19,39 +20,55 @@ export class LayoutComponent  {
 
   private router = inject(Router);
   private userService = inject(UserService);
+  private authService = inject(AuthService);
 
   currentUser = this.userService.currentUser;
 
-  menuOpen = false;
+  navMenuOpen = false;
+  contextMenuOpen = false;
 
-  toggleMenu() {
-    this.menuOpen = !this.menuOpen;
+  isAuth(): boolean{
+    return this.authService.isAuthenticated();
+  }
 
-    if (this.menuOpen) {
+  toggleContextMenu(){
+    if (this.navMenuOpen) {
+      this.navMenuOpen = false
+      document.body.style.overflow = '';
+    }
+    this.contextMenuOpen = !this.contextMenuOpen;
+  }
+
+  toggleNavMenu() {
+    this.navMenuOpen = !this.navMenuOpen;
+
+    if (this.navMenuOpen) {
       document.body.style.overflow = 'hidden';
+      this.contextMenuOpen = false;
     } else {
       document.body.style.overflow = '';
     }
+  }
+
+  logout(){
+    this.authService.logout();
+    this.router.navigate(['/info']);
   }
 
   constructor() {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
-        this.menuOpen = false;
+        this.navMenuOpen = false;
+        this.contextMenuOpen = false;
         document.body.style.overflow = '';
       });
     this.userService.getCurrentUser();
   }
 
-  links: NavLink[]=[
-    { label: 'Профіль', icon: '/svg/person.svg', route: 'profile', visible: !!this.currentUser() },
-    { label: 'Щоденний бокс', icon: '/svg/box.svg', route: 'drewards', visible: !!this.currentUser() },
-    { label: 'Рейтинги (soon)', icon: '/svg/stat.svg', route: 'stats', visible: !!this.currentUser() },
-    { label: 'Матеріали (soon)', icon: '/svg/material.svg', route: 'materials', visible: !!this.currentUser() },
-    { label: 'Біржа (soon)', icon: '/svg/burse.svg', route: 'burse', visible: !!this.currentUser() },
-    { label: 'Казино (зачинено)', icon: '/svg/casino.svg', route: 'casino', visible: !!this.currentUser() },
-    { label: 'Увійти', icon: '/svg/key.svg', route: 'signin', visible: !this.currentUser() },
-    { label: 'Про тікетономіку', icon: '/svg/info.svg', route: 'ticketonomika', visible: true },
-  ];
+  getRouterOutletState(outlet: RouterOutlet) {
+    return outlet?.isActivated 
+    ? outlet.activatedRoute.snapshot.url.join('/') 
+    : '';
+  }
 }

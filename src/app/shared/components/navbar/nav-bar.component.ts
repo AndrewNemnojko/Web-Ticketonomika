@@ -16,7 +16,6 @@ export class NavBarComponent {
   isAuth = this.userService.isAuthenticated();
 
   links: NavLink[]=[
-    { label: 'Профіль', icon: '/svg/person.svg', route: 'profile', visible:  this.isAuth },
     { label: 'Щоденний бокс', icon: '/svg/box.svg', route: 'drewards', visible: this.isAuth },
     { label: 'Рейтинги (soon)', icon: '/svg/stat.svg', route: 'stats', visible: this.isAuth },
     { label: 'Матеріали (soon)', icon: '/svg/material.svg', route: 'materials', visible: this.isAuth },
