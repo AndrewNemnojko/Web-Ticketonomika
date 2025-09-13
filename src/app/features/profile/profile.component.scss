@@ -2,63 +2,63 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px; 
+  gap: 15px;
 
   .card {
-    padding: 20px; 
-    border-radius: 15px; 
+    padding: 20px;
+    border-radius: 15px;
     width: 100%;
-    background-color:#473d8763; 
-    box-shadow: 0 0 6px #0000000f; 
+    background-color: #473d8763;
+    box-shadow: 0 0 6px #0000000f;
 
     .values {
       display: flex;
       flex-direction: column;
-      gap: 8px; 
+      gap: 8px;
     }
 
     img.ticket {
-      height: 15px; 
+      height: 15px;
       margin-left: 5px;
     }
 
     h2.profile-name {
-      font-family: 'Inter';
-      font-weight: 700; 
-      font-size: 18px; 
+      font-family: "Inter";
+      font-weight: 700;
+      font-size: 18px;
       margin: 0;
     }
 
     h3.title {
       text-align: center;
-      font-family: 'Inter';
-      font-weight: 600; 
-      font-size: 16px; 
+      font-family: "Inter";
+      font-weight: 600;
+      font-size: 16px;
       margin-bottom: 8px;
     }
 
     h4 {
-      font-family: 'Inter';
-      font-weight: 500; 
-      font-size: 13px; 
+      font-family: "Inter";
+      font-weight: 500;
+      font-size: 13px;
       margin: 0 0 3px 0;
     }
 
     p {
-      font-family: 'Inter';
-      font-weight: 400; 
-      font-size: 13px; 
+      font-family: "Inter";
+      font-weight: 400;
+      font-size: 13px;
       margin: 0;
     }
 
     ul {
       display: flex;
       flex-direction: column;
-      padding: 5px 0; 
+      padding: 5px 0;
       gap: 6px;
 
       li {
-        padding: 6px; 
+        padding: 6px;
         border-radius: 8px;
       }
     }
@@ -75,10 +75,10 @@
       justify-content: center;
       background-color: #ffffff00;
       box-shadow: none;
-      gap: 25px; 
+      gap: 25px;
 
       img.avatar {
-        width: 100px; 
+        width: 100px;
         aspect-ratio: 1;
         border-radius: 50%;
         border: 5px solid rgba(255, 255, 255, 0.248);
@@ -86,12 +86,12 @@
       }
     }
 
-    &.balance{
+    &.balance {
       .values {
-        flex-direction: row; 
+        flex-direction: row;
         gap: 5px;
         justify-content: center;
-        div{
+        div {
           padding: 15px;
           border-radius: 10px;
           min-width: max-content;
@@ -101,7 +101,7 @@
           flex-direction: column;
           align-items: center;
         }
-        h3{
+        h3 {
           display: flex;
           align-items: center;
           font-size: 17px;
@@ -115,7 +115,7 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 10px; 
+        gap: 10px;
         padding: 4px 0;
       }
 
@@ -133,18 +133,17 @@
           flex-direction: column;
           padding: 0px 5px;
           justify-content: center;
-          
-          span{
+
+          span {
             font-weight: 500;
             font-size: 13px;
-            &.amount{
+            &.amount {
               font-size: 11px;
               color: #ffffffc7;
             }
           }
-          
-        }      
-      }    
+        }
+      }
     }
   }
 }
@@ -152,8 +151,8 @@
 @media (max-width: 600px) {
   .profile-block {
     .card {
-      padding: 20px;  
-      h4{
+      padding: 20px;
+      h4 {
         text-align: center;
       }
     }

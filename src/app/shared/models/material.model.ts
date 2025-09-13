@@ -1,5 +1,5 @@
-export interface Material{
-    name: string;
-    amount: number;
-    price: number;
+export interface Material {
+  name: string;
+  amount: number;
+  price: number;
 }

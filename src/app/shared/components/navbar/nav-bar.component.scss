@@ -9,7 +9,7 @@ nav {
   background-color: #473d8763;
   border-radius: 20px;
   padding: 10px;
-  &.unauth{
+  &.unauth {
     display: flex;
     padding: 0;
     flex-direction: row-reverse;
@@ -17,16 +17,16 @@ nav {
     height: 50px;
     border-radius: 0;
     background: #ffffff00;
-    
-    a{
+
+    a {
       width: 50px;
       padding: 12px;
       border: 1px solid white;
       margin: 0;
-      &.active-link{
+      &.active-link {
         display: none;
       }
-      span{
+      span {
         display: none;
       }
     }
@@ -44,8 +44,8 @@ nav {
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    transition: all .3s ease-in-out;
-    
+    transition: all 0.3s ease-in-out;
+
     border: 1px solid rgba(255, 255, 255, 0);
 
     span {
@@ -53,16 +53,15 @@ nav {
       flex: 1;
       text-align: center;
       font-weight: 500;
-      font-size: 13px; 
+      font-size: 13px;
     }
 
     &.active-link {
       border: 1px solid white;
-      background-color: #ffffff0e;
-      span{
+      background-color: #4a339a;
+      span {
         font-weight: 600;
       }
-      
     }
 
     &:hover {
@@ -76,11 +75,10 @@ nav {
     height: 20px;
   }
 }
-@media (max-width: 1160px){
-  nav { 
+@media (max-width: 1160px) {
+  nav {
     width: 70px;
     a {
-      
       width: 50px;
       span {
         display: none;
@@ -97,22 +95,22 @@ nav {
     padding: 0 20px;
     border: 1px solid #ffffff00;
     a {
-      background-color: #473d8763;
+      background-color: #383168;
       width: 100%;
       height: auto;
+      border: 1px solid white;
       padding: 20px;
       span {
         display: block;
       }
     }
-    &.unauth{
-
+    &.unauth {
     }
   }
 }
-@media (max-width: 600px){
+@media (max-width: 600px) {
   nav {
     width: 300px;
-    grid-template-columns: 1fr ;
+    grid-template-columns: 1fr;
   }
 }

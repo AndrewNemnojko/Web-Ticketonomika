@@ -1,7 +1,7 @@
 <div class="profile-block">
-  @if(user(); as u) {
+  @if (user; as u) {
     <article class="card profile">
-      <img [src]="u.avatar || '/svg/image.svg'" alt="avatar" class="avatar">
+      <img [src]="u.avatar || '/svg/image.svg'" alt="avatar" class="avatar" />
       <div class="values">
         <h2 class="profile-name">{{ u.name }}</h2>
         <p>{{ u.username }}</p>
@@ -10,7 +10,7 @@
       </div>
     </article>
 
-    @if(u.materials!.length) {
+    @if (u.materials!.length) {
       <section class="card balance">
         <h3 class="title">Баланс</h3>
         <div class="values">
@@ -26,61 +26,68 @@
           <div class="tickets">
             <h4>Тікетів:</h4>
             <h3>
-              {{ u.tickets || 0 }} 
-              <img class="ticket" src="/svg/ticket.svg" alt="ticket">
+              {{ u.tickets || 0 }}
+              <img class="ticket" src="/svg/ticket.svg" alt="ticket" />
             </h3>
           </div>
           <div class="materials">
             <h4>Матеріали:</h4>
             <h3>
               {{ this.totalMaterialsCost }}
-              <img class="ticket" src="/svg/ticket.svg" alt="ticket">
+              <img class="ticket" src="/svg/ticket.svg" alt="ticket" />
             </h3>
           </div>
         </div>
       </section>
     }
 
-    @if(u.materials!.length){
+    @if (u.materials!.length) {
       <section class="card materials">
         <h3 class="title">Матеріали</h3>
         <ul class="materials-list">
-          @for(mat of u.materials; track mat.name) {
+          @for (mat of u.materials; track mat.name) {
             <li class="material">
-              <img class="icon" [src]="mat.name | iconMaterial" alt="{{ mat.name }}">
-              <div class="display">              
+              <img
+                class="icon"
+                [src]="mat.name | iconMaterial"
+                alt="{{ mat.name }}"
+              />
+              <div class="display">
                 <span class="name">{{ mat.name }}</span>
                 <span class="amount">x {{ mat.amount }}</span>
-              </div>                
+              </div>
             </li>
           }
         </ul>
       </section>
     }
 
-    @if(u.awards!.length) {
+    @if (u.awards!.length) {
       <section class="card awards">
         <h3 class="title">Нагороди</h3>
         <ul class="awards-list values">
-          @for(award of u.awards; track award.id) {
-            <li><h4 >{{ award.name }}</h4></li>
+          @for (award of u.awards; track award.id) {
+            <li>
+              <h4>{{ award.name }}</h4>
+            </li>
           }
         </ul>
       </section>
     }
 
-    @if(u.jobs!.length) {
+    @if (u.jobs!.length) {
       <section class="card jobs">
         <h3 class="title">Посади</h3>
         <ul class="jobs-list values">
-          @for(job of u.jobs; track job.id) {
-            <li><h4>{{ job.name }}</h4></li>
+          @for (job of u.jobs; track job.id) {
+            <li>
+              <h4>{{ job.name }}</h4>
+            </li>
           }
         </ul>
       </section>
     }
-  } 
-  @else {
+  } @else {
     <p>Пуп-уп...</p>
   }
 </div>

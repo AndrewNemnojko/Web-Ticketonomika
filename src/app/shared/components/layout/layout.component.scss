@@ -22,22 +22,22 @@ header {
     display: flex;
     align-items: center;
     gap: 20px;
-    transition: all .2s ease-in-out;
+    transition: all 0.2s ease-in-out;
     img {
       width: 40px;
       height: 40px;
     }
 
-    h4{   
-      font-family: 'Inter';
-      font-weight: 700; 
+    h4 {
+      font-family: "Inter";
+      font-weight: 700;
       width: 250px;
       font-size: 34px;
-      text-align: center;  
-      margin: 0;  
+      text-align: center;
+      margin: 0;
     }
 
-    &:hover{
+    &:hover {
       cursor: pointer;
       color: #e3ff55;
     }
@@ -49,26 +49,26 @@ header {
     position: relative;
     gap: 10px;
 
-    .context-menu{
+    .context-menu {
       display: flex;
       gap: 10px;
       align-items: center;
       justify-content: center;
       font-size: 13px;
-      .lang{
+      .lang {
         display: flex;
         background-color: #383168;
         height: 50px;
         border-radius: 15px;
         border: 1px solid white;
         overflow: hidden;
-        
-        button.current{
-          background-color:  rgb(255, 255, 255);
+
+        button.current {
+          background-color: rgb(255, 255, 255);
           color: black;
         }
       }
-      button{
+      button {
         display: flex;
         border: none;
         width: 50px;
@@ -77,12 +77,12 @@ header {
         align-items: center;
         background-color: #383168;
         border-radius: 0;
-        &:hover{
+        &:hover {
           background-color: #433d6b;
           cursor: pointer;
         }
       }
-      a{
+      a {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -91,7 +91,7 @@ header {
         height: 50px;
         background-color: #383168;
         padding: 12px;
-        &:hover{
+        &:hover {
           background-color: #433d6b;
           cursor: pointer;
         }
@@ -99,10 +99,10 @@ header {
     }
 
     button {
-      &.btn-apps{
-        display: none;          
+      &.btn-apps {
+        display: none;
       }
-      &:hover{
+      &:hover {
         background-color: #ffffff0d;
       }
       height: 50px;
@@ -112,10 +112,10 @@ header {
       display: none;
       background: none;
       border: 1px solid white;
-      transition: all .2s ease-in-out;
-      cursor: pointer;      
-      .menu-icon{
-        transition: all .2s ease-in-out;
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+      .menu-icon {
+        transition: all 0.2s ease-in-out;
         &.rotated {
           transform: rotate(180deg);
         }
@@ -125,7 +125,7 @@ header {
 }
 .compact-nav {
   display: none;
-  &.unauth{
+  &.unauth {
     display: block;
   }
 }
@@ -138,7 +138,8 @@ header {
   padding: 20px;
   padding-top: 100px;
   overflow-y: scroll;
-  max-height: 100vh;
+  //max-height: 100vh;
+  height: 100vh;
   align-items: flex-start;
   .dekstop-nav {
     position: sticky;
@@ -148,54 +149,53 @@ header {
     flex-shrink: 0;
     align-items: center;
   }
-  .route{
+  .route {
     position: relative;
     top: 0px;
     display: flex;
     margin: 0 auto;
-    transition: all .2s ease-in-out;
+    transition: all 0.2s ease-in-out;
     width: 100%;
     max-width: 850px;
     flex-direction: column;
     min-height: 100%;
-   
-    &.unauth{
+    &.unauth {
       max-width: 1050px;
     }
   }
   router-outlet {
-    flex: 1;
     min-width: 0;
   }
 }
-@media (max-width: 1160px){
-  header{
+@media (max-width: 1160px) {
+  header {
     background-color: #ffffff00;
     backdrop-filter: blur(20px);
   }
 }
 
-
-@media (max-width: 980px){
-  .main-container{
-    .route{
+@media (max-width: 980px) {
+  .main-container {
+    .route {
       max-width: 650px;
     }
-  }  
+  }
 }
 
 @media (max-width: 780px) {
   .main-container {
     padding-top: 85px;
+    min-height: 100dvh;
+    height: 100%;
     max-height: none;
     flex-direction: column;
-    .route{
+    .route {
       opacity: 1;
-      &.hide{
-        top: 10px;
-        opacity: 0;
+      &.hide {
+        opacity: 0.5;
+        filter: blur(3px);
       }
-      &.mute{
+      &.mute {
         opacity: 0.5;
         filter: blur(3px);
       }
@@ -203,111 +203,126 @@ header {
     .dekstop-nav {
       display: none;
     }
-    
+
     router-outlet {
       width: 100%;
     }
   }
-  .compact-nav{
-      display: flex;
-      position: fixed;
-      top: 55px;
-      width: 100%;
-      left: 0;
-      transition: all .2s ease-in-out;
-      pointer-events: none;
-      opacity: 0; 
-      overflow-y: auto;
-      height: calc(100dvh - 65px);   
-      padding: 10px;
-      z-index: 30;
-      align-items: center;
-      justify-content: center;
-      &.open { 
-        top: 65px;
-        pointer-events: all;
-        opacity: 1;
-        flex-direction: column;
-      }
-      &::-webkit-scrollbar {
-        height: 0px;
-        width: 2px;
-      }
+  .compact-nav {
+    display: flex;
+    position: fixed;
+    top: 55px;
+    width: 100%;
+    left: 0;
+    transition: all 0.2s ease-in-out;
+    pointer-events: none;
+    opacity: 0;
+    overflow-y: auto;
+    height: calc(100dvh - 65px);
+    padding: 10px;
+    z-index: 30;
+    align-items: center;
+    justify-content: center;
+    &.open {
+      top: 65px;
+      pointer-events: all;
+      opacity: 1;
+      flex-direction: column;
     }
+    &::-webkit-scrollbar {
+      height: 0px;
+      width: 2px;
+    }
+  }
   header {
     padding: 10px 0px;
-    
-    .logo-section{
-      img{
+
+    .logo-section {
+      img {
         height: 30px;
         width: 30px;
       }
-      h4{
+      h4 {
         width: max-content;
         font-size: x-large;
       }
     }
     nav {
-      
-      button{
+      button {
         background-color: #473d8763;
-       
+
         &.btn-menu {
           display: block;
         }
-        &.btn-apps{
+        &.btn-apps {
           display: block;
         }
-      } 
-      &.unauth{
-        button{
-          &.btn-menu, &.btn-apps{
-            display: none;
-          }
-        }
-        .context-menu, .compact-nav{
-          display: flex;
-          position: relative;
-          opacity: 1;
-          top: 0px;
-          width: max-content;
-          pointer-events: all;
-          padding: 0px;
-          height: 50px;
-        }
-        .lang{
-          button{
-             width: 40px;
-          }
-        }
-      }  
-      .context-menu{
+      }
+      .context-menu {
         position: absolute;
         opacity: 0;
         right: 0px;
-        transition: all .2s ease-in-out;
+        transition: all 0.2s ease-in-out;
         top: 60px;
         flex-direction: column;
         pointer-events: none;
         width: 175px;
-        &.open{
+        &.open {
           top: 70px;
           opacity: 1;
           pointer-events: all;
         }
-        div, button, a{
+        div,
+        button,
+        a {
           height: 50px;
           width: 100%;
           border-radius: 15px;
-        }    
-        .lang{
-          button{
+        }
+        .lang {
+          button {
             border-radius: 0;
           }
-          height: 50px;         
+          height: 50px;
         }
-        
       }
     }
+  }
+}
+
+header.unauth {
+  nav {
+    .context-menu,
+    .compact-nav {
+      display: flex;
+      position: relative;
+      opacity: 1;
+      top: 0px;
+      width: max-content;
+      pointer-events: all;
+      padding: 0px;
+      height: 50px;
+    }
+    button {
+      &.btn-menu,
+      &.btn-apps {
+        display: none;
+      }
+    }
+    .lang {
+      button {
+        width: 40px;
+      }
+    }
+  }
+}
+
+.main-container.unauth {
+  .route {
+    max-width: 1050px;
+  }
+
+  .compact-nav {
+    display: block;
   }
 }

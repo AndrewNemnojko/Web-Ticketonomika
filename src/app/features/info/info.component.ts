@@ -4,6 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-info',
   imports: [],
   templateUrl: './info.component.html',
-  styleUrl: './info.component.scss'
+  styleUrl: './info.component.scss',
 })
 export class PresentationComponent {}

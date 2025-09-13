@@ -6,7 +6,7 @@ import { StarsEffectComponent } from './shared/components/stars-effect/stars-eff
   selector: 'app-root',
   imports: [RouterOutlet, StarsEffectComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'Ticketonomika';

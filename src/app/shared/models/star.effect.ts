@@ -5,7 +5,7 @@ export interface Star {
   opacity: number;
   fade: number;
   speed: number;
-  life: number;    
-  maxLife: number; 
+  life: number;
+  maxLife: number;
   color: string;
 }

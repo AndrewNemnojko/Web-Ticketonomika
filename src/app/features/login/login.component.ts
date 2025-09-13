@@ -1,5 +1,10 @@
 import { Component, signal } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../core/services/auth.service';
@@ -9,7 +14,7 @@ import { AuthService } from '../../core/services/auth.service';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   loginForm: FormGroup;
@@ -22,7 +27,10 @@ export class LoginComponent {
     private authService: AuthService,
   ) {
     this.loginForm = this.fb.group({
-      code: ['', [Validators.required, Validators.maxLength(6), Validators.minLength(6)]]
+      code: [
+        '',
+        [Validators.required, Validators.maxLength(6), Validators.minLength(6)],
+      ],
     });
   }
 
@@ -44,9 +52,10 @@ export class LoginComponent {
         if (err.status === 401) {
           this.errorMessage.set('Код не дійсний');
         } else {
+          this.router.navigate(['/profile']);
           this.errorMessage.set("Помилка з'єднання, спробуйте пізніше");
         }
-      }
+      },
     });
   }
 }

@@ -1,27 +1,35 @@
-import { Component, inject} from "@angular/core";
-import { IconMaterialPipe } from "../../shared/pipes/icon-material.pipe";
-import { UserService } from "../../core/services/user.service";
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { IconMaterialPipe } from '../../shared/pipes/icon-material.pipe';
+import { AuthService } from '../../core/services/auth.service';
+import { User } from '../../shared/models/user.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
   imports: [IconMaterialPipe],
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.scss'
+  styleUrl: './profile.component.scss',
 })
-export class ProfileComponent{
-  private userService = inject(UserService);
+export class ProfileComponent implements OnInit, OnDestroy {
+  private authService = inject(AuthService);
+  user: User | null = null;
+  private userSub!: Subscription;
 
-  user = this.userService.currentUser;
+  ngOnInit(): void {
+    this.userSub = this.authService.currentUser$.subscribe((u) => {
+      this.user = u;
+    });
 
-  constructor() {
-    this.userService.getCurrentUser();
+    this.authService.getUser().subscribe();
+  }
+
+  ngOnDestroy(): void {
+    this.userSub.unsubscribe();
   }
 
   get totalMaterialsCost(): number {
-    const u = this.user();
-    const sum = u
-      ? u.materials.reduce((s, m) => s + m.price * m.amount, 0)
-      : 0;
+    if (!this.user || !this.user.materials) return 0;
+    const sum = this.user.materials.reduce((s, m) => s + m.price * m.amount, 0);
     return Math.round(sum * 100) / 100;
   }
 }

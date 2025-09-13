@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChild, signal } from '@angular/core';
 import { DrewardService } from '../services/dreward.service';
 import { Reward } from '../../../shared/models/reward.model';
-import { IconMaterialPipe } from "../../../shared/pipes/icon-material.pipe";
+import { IconMaterialPipe } from '../../../shared/pipes/icon-material.pipe';
 import { interval, map, startWith } from 'rxjs';
 import { DatePipe } from '@angular/common';
 
@@ -11,7 +11,7 @@ type TodayRewardState = 'available' | 'opening' | 'done';
   selector: 'app-dreward',
   templateUrl: './dreward.component.html',
   styleUrl: './dreward.component.scss',
-  imports: [IconMaterialPipe, DatePipe]
+  imports: [IconMaterialPipe, DatePipe],
 })
 export class DrewardComponent {
   todayState = signal<TodayRewardState>('available');
@@ -23,7 +23,6 @@ export class DrewardComponent {
   @ViewChild('strip') stripRef!: ElementRef<HTMLDivElement>;
 
   constructor(private drewardService: DrewardService) {}
-
 
   async ngOnInit() {
     const available = await this.drewardService.isBoxAvailable();
@@ -43,24 +42,27 @@ export class DrewardComponent {
 
   async runSlotAnimation(winningIndex: number) {
     const strip = this.stripRef.nativeElement;
-  
-    const itemWidth = parseInt(
-      getComputedStyle(document.documentElement).getPropertyValue('--reward-size')
-    ); 
 
-    const winningOffset = (winningIndex - (itemWidth === 70 ? 3 : 2)) * itemWidth ;
+    const itemWidth = parseInt(
+      getComputedStyle(document.documentElement).getPropertyValue(
+        '--reward-size',
+      ),
+    );
+
+    const winningOffset =
+      (winningIndex - (itemWidth === 70 ? 3 : 2)) * itemWidth;
 
     const animation = strip.animate(
       [
-        { transform: `translateX(-${0}px)` }, 
+        { transform: `translateX(-${0}px)` },
         { transform: `translateX(-${winningOffset / 2}px)` },
-        { transform: `translateX(-${winningOffset}px)` }   
+        { transform: `translateX(-${winningOffset}px)` },
       ],
       {
         duration: 5000,
         easing: 'cubic-bezier(0.2, 0.8, 0.4, 1)',
-        fill: 'forwards'
-      }
+        fill: 'forwards',
+      },
     );
 
     animation.onfinish = async () => {
@@ -75,5 +77,4 @@ export class DrewardComponent {
   isWinning(i: number) {
     return i === this.winningIndex();
   }
-
 }

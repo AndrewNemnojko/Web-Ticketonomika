@@ -1,5 +1,5 @@
-export interface Reward{
-    material: string;
-    amount: number;   
-    date?: Date; 
+export interface Reward {
+  material: string;
+  amount: number;
+  date?: Date;
 }

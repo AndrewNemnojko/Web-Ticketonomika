@@ -1,14 +1,22 @@
-import { AfterViewInit, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  HostListener,
+  ViewChild,
+} from '@angular/core';
 import { Star } from '../../models/star.effect';
 
 @Component({
   selector: 'app-stars-effect',
   imports: [],
   template: '<canvas #starsCanvas class="stars-canvas"></canvas>',
-  styles: ".stars-canvas{position: fixed;top: 0;left: 0;z-index: -1;width: 100%;height: 100%;pointer-events: none;} .stars-canvas{display: block;width: 100%;height: 100%;}",
+  styles:
+    '.stars-canvas{position: fixed;top: 0;left: 0;z-index: -1;width: 100%;height: 100%;pointer-events: none;} .stars-canvas{display: block;width: 100%;height: 100%;}',
 })
 export class StarsEffectComponent implements AfterViewInit {
-  @ViewChild('starsCanvas', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;
+  @ViewChild('starsCanvas', { static: true })
+  canvasRef!: ElementRef<HTMLCanvasElement>;
 
   private ctx!: CanvasRenderingContext2D;
   private stars: Star[] = [];
@@ -49,10 +57,10 @@ export class StarsEffectComponent implements AfterViewInit {
       size: Math.random() * 2,
       opacity: Math.random(),
       fade: (Math.random() * 0.02 + 0.005) * (Math.random() > 0.5 ? 1 : -1),
-      speed: Math.random() * 0.05 + 0.01, 
+      speed: Math.random() * 0.05 + 0.01,
       life: 0,
-      maxLife: Math.random() * 300 + 200, 
-      color
+      maxLife: Math.random() * 300 + 200,
+      color,
     };
   }
 
@@ -62,18 +70,17 @@ export class StarsEffectComponent implements AfterViewInit {
     this.stars.forEach((star, i) => {
       star.y -= star.speed;
       star.life++;
-      
+
       const halfLife = star.maxLife / 2;
 
-      if (star.life < halfLife) {  
+      if (star.life < halfLife) {
         star.opacity = star.life / halfLife;
-      } 
-      else {
+      } else {
         star.opacity = 1 - (star.life - halfLife) / halfLife;
       }
 
       if (star.life >= star.maxLife || star.y < 0) {
-        this.stars[i] = this.createStar(); 
+        this.stars[i] = this.createStar();
       }
 
       this.ctx.beginPath();

@@ -1,10 +1,21 @@
-import { Component, inject} from '@angular/core';
-import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  inject,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import {
+  NavigationEnd,
+  Router,
+  RouterLink,
+  RouterOutlet,
+} from '@angular/router';
 import { routeTransition } from '../../../../route-transition';
-import { filter } from 'rxjs';
+import { filter, Subscription } from 'rxjs';
 import { NavBarComponent } from '../navbar/nav-bar.component';
-import { UserService } from '../../../core/services/user.service';
-import { NavLink } from '../../models/nav-link.model';
 import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
@@ -12,28 +23,30 @@ import { AuthService } from '../../../core/services/auth.service';
   imports: [RouterOutlet, NavBarComponent, RouterLink],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
-  animations: [
-    routeTransition
-  ]
+  animations: [routeTransition],
 })
-export class LayoutComponent  {
-
+export class LayoutComponent implements OnDestroy, OnInit {
   private router = inject(Router);
-  private userService = inject(UserService);
+  private cd = inject(ChangeDetectorRef);
   private authService = inject(AuthService);
-
-  currentUser = this.userService.currentUser;
 
   navMenuOpen = false;
   contextMenuOpen = false;
 
-  isAuth(): boolean{
-    return this.authService.isAuthenticated();
+  isAuthenticated = false;
+
+  private routerSub!: Subscription;
+  private authSub!: Subscription;
+
+  constructor() {}
+
+  get authClass(): string {
+    return this.isAuthenticated ? '' : 'unauth';
   }
 
-  toggleContextMenu(){
+  toggleContextMenu() {
     if (this.navMenuOpen) {
-      this.navMenuOpen = false
+      this.navMenuOpen = false;
       document.body.style.overflow = '';
     }
     this.contextMenuOpen = !this.contextMenuOpen;
@@ -50,25 +63,52 @@ export class LayoutComponent  {
     }
   }
 
-  logout(){
+  logout() {
     this.authService.logout();
     this.router.navigate(['/info']);
   }
 
-  constructor() {
-    this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
+  @ViewChild('mainContainer', { static: true })
+  mainContainer!: ElementRef<HTMLDivElement>;
+
+  private CloseAllMenu() {
+    this.navMenuOpen = false;
+    this.contextMenuOpen = false;
+    document.body.style.overflow = '';
+  }
+
+  private ScrollToTop() {
+    const options: ScrollToOptions = { top: 0, behavior: 'smooth' };
+    if (window.innerWidth <= 780) {
+      window.scrollTo(options);
+    } else {
+      this.mainContainer.nativeElement.scrollTo(options);
+    }
+  }
+
+  ngOnInit(): void {
+    this.routerSub = this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
-        this.navMenuOpen = false;
-        this.contextMenuOpen = false;
-        document.body.style.overflow = '';
+        this.CloseAllMenu();
+        this.ScrollToTop();
+        this.cd.detectChanges();
       });
-    this.userService.getCurrentUser();
+
+    this.authSub = this.authService.isAuthenticated$.subscribe((isAuth) => {
+      this.isAuthenticated = isAuth;
+      this.cd.detectChanges();
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.routerSub.unsubscribe();
+    this.authSub.unsubscribe();
   }
 
   getRouterOutletState(outlet: RouterOutlet) {
-    return outlet?.isActivated 
-    ? outlet.activatedRoute.snapshot.url.join('/') 
-    : '';
+    return outlet?.isActivated
+      ? outlet.activatedRoute.snapshot.url.join('/')
+      : '';
   }
 }

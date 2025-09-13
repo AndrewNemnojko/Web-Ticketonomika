@@ -1,55 +1,58 @@
-<header>
+<header class="{{ authClass }}">
   <div class="container header-container">
     <div routerLink="info" class="logo-section">
-      <!--<img src="/svg/ticket.svg" alt="Logo">-->
       <h4>Ticketonomics</h4>
     </div>
-    <nav class="{{isAuth() ? '' : 'unauth'}}">
-
-      <div class="context-menu {{contextMenuOpen ? 'open' : ''}}">
+    <nav>
+      <div class="context-menu {{ contextMenuOpen ? 'open' : '' }}">
         <div class="lang">
           <button class="current">UA</button>
           <button>ENG</button>
         </div>
-        @if(isAuth()){
+        @if (isAuthenticated) {
           <a routerLink="/profile">
-            <img src="/svg/person.svg">
+            <img src="/svg/person.svg" />
             Профіль
           </a>
           <a (click)="logout()">
-            <img src="/svg/logout.svg">
+            <img src="/svg/logout.svg" />
             Вийти
           </a>
-        }    
+        }
       </div>
-      
-      <button class="btn-apps {{contextMenuOpen ? 'open' : ''}}" (click)="toggleContextMenu()">
-        <img src="/svg/apps.svg" class="menu-icon">
+
+      <button
+        class="btn-apps {{ contextMenuOpen ? 'open' : '' }}"
+        (click)="toggleContextMenu()"
+      >
+        <img src="/svg/apps.svg" class="menu-icon" />
       </button>
-              
+
       <button class="btn-menu" (click)="toggleNavMenu()">
-        <img 
-          [src]="navMenuOpen ? '/svg/close.svg' : '/svg/menu.svg'"  
+        <img
+          [src]="navMenuOpen ? '/svg/close.svg' : '/svg/menu.svg'"
           alt="Menu"
           class="menu-icon"
           [class.rotated]="navMenuOpen"
-        >
+        />
       </button>
-      
-      <app-nav-bar 
-        class="compact-nav {{navMenuOpen ? 'open' : ''}} {{isAuth() ? '' : 'unauth'}}"
-      >
+
+      <app-nav-bar class="compact-nav {{ navMenuOpen ? 'open' : '' }}">
       </app-nav-bar>
     </nav>
   </div>
 </header>
 
-<div class="container main-container">
-  @if(isAuth()){
-    <app-nav-bar class="dekstop-nav" ></app-nav-bar>
+<div #mainContainer class="container main-container {{ authClass }}">
+  @if (isAuthenticated) {
+    <app-nav-bar class="dekstop-nav"></app-nav-bar>
   }
-  
-  <div [@routeTransition]="getRouterOutletState(outlet)" class="route {{navMenuOpen ? 'hide' : ''}} {{contextMenuOpen ? 'mute' : ''}} {{isAuth() ? '' : 'unauth'}}">
+
+  <div
+    [@routeTransition]="getRouterOutletState(outlet)"
+    class="route 
+      {{ navMenuOpen || contextMenuOpen ? 'mute' : '' }}"
+  >
     <router-outlet #outlet="outlet"></router-outlet>
   </div>
 </div>
