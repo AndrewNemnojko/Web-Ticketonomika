@@ -9,7 +9,7 @@ h3.title {
   .card {
     padding: 20px;
     border-radius: 20px;
-    background-color: #473d8763;
+    background-color: #ffffff0d;
     &.today-reward {
       position: relative;
       display: flex;
@@ -126,14 +126,14 @@ h3.title {
       }
       .history-strip {
         display: flex;
-        gap: 5px;
+       
         flex-direction: column;
 
         .history-item {
-          border-radius: 8px;
+          border-bottom: 2px solid #ffffff0f;
+          border-radius: 0;
           display: flex;
           padding: 10px 20px;
-          background-color: rgba(0, 0, 0, 0.1019607843);
           justify-content: space-between;
           align-items: center;
           font-size: 13px;

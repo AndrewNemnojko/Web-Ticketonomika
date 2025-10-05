@@ -6,9 +6,30 @@ nav {
   width: 250px;
   max-height: 100%;
   overflow-y: scroll;
-  background-color: #473d8763;
   border-radius: 20px;
   padding: 10px;
+  .nav-list{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .context-menu{
+    display: none;
+    div,
+    button,
+    a {     
+      width: 100%;
+      border-radius: 10px;
+      img{
+        height: 20px;
+      }
+    }
+    .lang {
+      button {
+        border-radius: 0;
+      }   
+    }
+  }
   &.unauth {
     display: flex;
     padding: 0;
@@ -38,6 +59,7 @@ nav {
   a {
     display: flex;
     padding: 12px;
+    flex-direction: row;
     gap: 5px;
     border-radius: 10px;
     height: 50px;
@@ -45,9 +67,19 @@ nav {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease-in-out;
-
-    border: 1px solid rgba(255, 255, 255, 0);
-
+    border: 1px solid rgba(255, 255, 255, 0.088);
+    &:hover {
+      background-color: #ffffff0e;
+      cursor: pointer;
+    }
+    &.close{  
+      background-color: #00000017;
+      pointer-events: none;    
+      color: #ffffff5c;
+      img{
+        opacity: 0.3;
+      }
+    }
     span {
       width: 100%;
       flex: 1;
@@ -56,18 +88,14 @@ nav {
       font-size: 13px;
     }
 
-    &.active-link {
-      border: 1px solid white;
-      background-color: #4a339a;
+    &.active-link { 
+      background-color: #7b9de61a;
       span {
         font-weight: 600;
       }
     }
 
-    &:hover {
-      background-color: #ffffff0e;
-      cursor: pointer;
-    }
+    
   }
 
   .icon {
@@ -80,6 +108,7 @@ nav {
     width: 70px;
     a {
       width: 50px;
+      flex-direction: column;
       span {
         display: none;
       }
@@ -87,30 +116,34 @@ nav {
   }
 }
 @media (max-width: 780px) {
+  
   nav {
     background-color: #ffffff00;
-    width: 500px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    width: 90%;
+    flex-direction: column;
     padding: 0 20px;
-    border: 1px solid #ffffff00;
+    border: 2px solid #ffffff00;
     a {
-      background-color: #383168;
       width: 100%;
       height: auto;
-      border: 1px solid white;
+      flex-direction: column;
+      border: 1px solid rgba(255, 255, 255, 0.192);
       padding: 20px;
       span {
         display: block;
       }
     }
-    &.unauth {
+    .nav-list{
+      display: grid;
+      gap: 10px;
+      grid-template-columns: 1fr 1fr;
+    }
+    .context-menu{
+      display: grid;
+      gap: 10px;
+      grid-template-columns: 3fr 7fr;
     }
   }
 }
-@media (max-width: 600px) {
-  nav {
-    width: 300px;
-    grid-template-columns: 1fr;
-  }
-}
+

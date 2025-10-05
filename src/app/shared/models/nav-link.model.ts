@@ -4,4 +4,6 @@ export interface NavLink {
   route: string;
   active?: boolean;
   authOnly?: boolean;
+  open: boolean
 }
+screenLeft

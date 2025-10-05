@@ -57,7 +57,6 @@ export const routeTransition = trigger('routeTransition', [
             style({
               opacity: 1,
               transform: 'translateY(0px)',
-              filter: 'blur(0px)',
             }),
           ),
         ],

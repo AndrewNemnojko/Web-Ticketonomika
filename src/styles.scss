@@ -28,6 +28,38 @@
   font-style: normal;
 }
 
+//
+
+@font-face {
+  font-family: "Geologica";
+  src: url("/fonts/Geologica/Geologica-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Geologica";
+  src: url("/fonts/Geologica/Geologica-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Geologica";
+  src: url("/fonts/Geologica/Geologica_Auto-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Geologica";
+  src: url("/fonts/Geologica/Geologica_Auto-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+//
+
 :root {
   --reward-size: 60px;
   --visible-count: 5;
@@ -49,10 +81,12 @@
 
 body {
   background: #2a2357;
+  background: #18162e;
   font-family: monospace;
   min-height: 100vh;
   color: #ffffff;
   font-family: "Inter", sans-serif;
+  font-family: "Geologica", sans-serif;
   font-weight: 400;
 }
 

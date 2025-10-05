@@ -19,7 +19,7 @@ import { Component } from '@angular/core';
         margin: 50px auto;
         border-radius: 30px;
         max-width: 400px;
-        background-color: #473d8763;
+        background-color: #ffffff05;
         align-items: center;
         justify-content: center;
         text-align: center;

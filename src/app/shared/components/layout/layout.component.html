@@ -4,11 +4,7 @@
       <h4>Ticketonomics</h4>
     </div>
     <nav>
-      <div class="context-menu {{ contextMenuOpen ? 'open' : '' }}">
-        <div class="lang">
-          <button class="current">UA</button>
-          <button>ENG</button>
-        </div>
+      <div class="context-menu">       
         @if (isAuthenticated) {
           <a routerLink="/profile">
             <img src="/svg/person.svg" />
@@ -19,40 +15,36 @@
             Вийти
           </a>
         }
+        @else {
+          <a routerLink="/signin" routerLinkActive="active-link">
+            <img src="/svg/key.svg" />          
+          </a>
+          <a routerLink="/info" routerLinkActive="active-link">
+            <img src="/svg/info.svg" />          
+          </a>
+        }
       </div>
-
-      <button
-        class="btn-apps {{ contextMenuOpen ? 'open' : '' }}"
-        (click)="toggleContextMenu()"
-      >
-        <img src="/svg/apps.svg" class="menu-icon" />
-      </button>
+      
 
       <button class="btn-menu" (click)="toggleNavMenu()">
         <img
           [src]="navMenuOpen ? '/svg/close.svg' : '/svg/menu.svg'"
-          alt="Menu"
-          class="menu-icon"
-          [class.rotated]="navMenuOpen"
+          alt="Menu" class="menu-icon" [class.rotated]="navMenuOpen"
         />
       </button>
-
-      <app-nav-bar class="compact-nav {{ navMenuOpen ? 'open' : '' }}">
-      </app-nav-bar>
     </nav>
   </div>
 </header>
 
 <div #mainContainer class="container main-container {{ authClass }}">
-  @if (isAuthenticated) {
-    <app-nav-bar class="dekstop-nav"></app-nav-bar>
-  }
-
+  
+  <app-nav-bar class="nav {{ navMenuOpen ? 'open' : '' }}"></app-nav-bar>
+  
   <div
     [@routeTransition]="getRouterOutletState(outlet)"
-    class="route 
-      {{ navMenuOpen || contextMenuOpen ? 'mute' : '' }}"
-  >
-    <router-outlet #outlet="outlet"></router-outlet>
+    class="route {{ navMenuOpen ? 'hide' : '' }}" >
+
+      <router-outlet #outlet="outlet"></router-outlet>
+
   </div>
 </div>

@@ -1,9 +1,15 @@
+.info-page{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
 section {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 10px;
   border-radius: 30px;
-  margin-bottom: 3rem;
   h3.title {
     font-size: 20px;
     text-align: center;
@@ -14,8 +20,7 @@ section {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 3rem;
-    padding: 70px;
+    flex-direction: column;
     border-radius: 30px;
     backdrop-filter: blur(5px);
     background-color: #ffffff08;
@@ -36,18 +41,27 @@ section {
       display: flex;
       gap: 15px;
       flex: 1;
-      font-size: 15px;
+      padding: 70px;
+      font-size: 14px;
       flex-direction: column;
       line-height: 25px;
       font-weight: 500;
     }
     a {
       color: #5ce2ff;
+      text-align: center;
+      background-color: #ffffff05;
+      padding: 25px;
+      width: 100%;
+      &:hover{
+        cursor: pointer;
+        background-color: #ffffff09;
+      }
     }
   }
   &.summary {
     .summary-body {
-      padding: 0;
+     
       .media {
         position: absolute;
         left: 0;
@@ -64,14 +78,40 @@ section {
         }
       }
       .text {
-        z-index: 2;
-        padding: 270px 70px 70px 70px;
-        background: linear-gradient(0deg, #312a5c, #ffffff00);
+        z-index: 2;      
         font-weight: 500;
       }
     }
   }
+  &.outer-links{
+    display: flex;
+    flex-direction: row;
+    a.link{
+      padding: 10px;
+      display: flex;
+      width: 50%;
+      align-items: center;
+      background-color: #ffffff08;
+      border-radius: 30px;
+      border: 2px solid #fefefe0a;
+      img{
+        width: 80px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+      }
+      h5{
+        width: 100%;
+        padding: 15px;
+        text-align: center;
+      }
+      &:hover{
+        cursor: pointer;
+        background-color: #c4c5ff10;
+      }
+    }
+  }
   &.contact {
+    padding: 30px;
     p {
       font-size: 15px;
       text-align: center;
@@ -79,17 +119,17 @@ section {
   }
 }
 
-@media (max-width: 700px) {
-  section {
-    .summary-body {
-      padding: 40px;
+@media (max-width: 800px) {
+  section{
+    .summary-body{
+      .text{
+        padding: 30px;
+      }
     }
-    &.summary {
-      .summary-body {
-        .text {
-          background: #312a5ca1;
-          padding: 40px;
-        }
+    &.outer-links{
+      flex-direction: column;
+      a.link{
+        width: 100%;
       }
     }
   }

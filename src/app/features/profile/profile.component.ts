@@ -4,6 +4,7 @@ import { AuthService } from '../../core/services/auth.service';
 import { User } from '../../shared/models/user.model';
 import { Subscription } from 'rxjs';
 
+
 @Component({
   selector: 'app-profile',
   imports: [IconMaterialPipe],

@@ -4,7 +4,7 @@ import { StarsEffectComponent } from './shared/components/stars-effect/stars-eff
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, StarsEffectComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

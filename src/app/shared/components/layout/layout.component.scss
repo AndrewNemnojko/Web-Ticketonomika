@@ -2,16 +2,18 @@ header {
   display: flex;
   justify-content: space-between;
   position: fixed;
+  height: 90px;
   top: 0;
   padding: 20px 0;
   width: 100%;
   background: linear-gradient(180deg, #2a2357, transparent);
+  background: linear-gradient(180deg, #18162e, transparent);
   z-index: 20;
-
+  
   .container.header-container {
     display: flex;
     width: 100%;
-    max-width: 1500px;
+    max-width: 1300px;
     margin: 0 auto;
     justify-content: space-between;
     align-items: center;
@@ -22,19 +24,18 @@ header {
     display: flex;
     align-items: center;
     gap: 20px;
-    transition: all 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out;
     img {
       width: 40px;
       height: 40px;
     }
 
     h4 {
-      font-family: "Inter";
       font-weight: 700;
       width: 250px;
       font-size: 34px;
       text-align: center;
-      margin: 0;
+      margin: 0;  
     }
 
     &:hover {
@@ -48,56 +49,28 @@ header {
     align-items: center;
     position: relative;
     gap: 10px;
-
-    .context-menu {
+    .context-menu{
       display: flex;
       gap: 10px;
-      align-items: center;
-      justify-content: center;
       font-size: 13px;
-      .lang {
-        display: flex;
-        background-color: #383168;
-        height: 50px;
-        border-radius: 15px;
-        border: 1px solid white;
-        overflow: hidden;
-
-        button.current {
-          background-color: rgb(255, 255, 255);
-          color: black;
-        }
-      }
-      button {
-        display: flex;
-        border: none;
-        width: 50px;
-        border-radius: 15px;
-        justify-content: center;
-        align-items: center;
-        background-color: #383168;
-        border-radius: 0;
-        &:hover {
-          background-color: #433d6b;
-          cursor: pointer;
-        }
-      }
-      a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 15px;
-        border: 1px solid white;
-        height: 50px;
-        background-color: #383168;
+      a{
         padding: 12px;
-        &:hover {
-          background-color: #433d6b;
+        border-radius: 10px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        background-color: #18162e;
+        border: 2px solid #ffffff5c;
+        transition: border 0.2s ease-in-out;
+        &:hover{
           cursor: pointer;
+          border: 2px solid #ffffff2f;
         }
-      }
+        &.active-link{
+          display: none;
+        }
+      }     
     }
-
     button {
       &.btn-apps {
         display: none;
@@ -123,25 +96,18 @@ header {
     }
   }
 }
-.compact-nav {
-  display: none;
-  &.unauth {
-    display: block;
-  }
-}
 .main-container {
   display: flex;
   gap: 20px;
-  max-width: 1500px;
+  max-width: 1300px;
   margin: 0 auto;
   position: relative;
   padding: 20px;
   padding-top: 100px;
   overflow-y: scroll;
-  //max-height: 100vh;
   height: 100vh;
   align-items: flex-start;
-  .dekstop-nav {
+  .nav {
     position: sticky;
     display: flex;
     top: 0px;
@@ -149,18 +115,24 @@ header {
     flex-shrink: 0;
     align-items: center;
   }
+  &.unauth{
+    .nav{
+      display: none;
+    }
+  }
   .route {
     position: relative;
     top: 0px;
     display: flex;
     margin: 0 auto;
-    transition: all 0.2s ease-in-out;
+    //transition: all 0.2s ease-in-out;
     width: 100%;
-    max-width: 850px;
+    
     flex-direction: column;
     min-height: 100%;
     &.unauth {
       max-width: 1050px;
+      
     }
   }
   router-outlet {
@@ -189,54 +161,37 @@ header {
     height: 100%;
     max-height: none;
     flex-direction: column;
+    
+    .nav{
+      
+      width: 100%;
+      position: fixed;
+      width: 100%;
+      right: -100vw;
+      max-height: calc(100dvh - 80px);
+      top: 80px;
+      justify-content: center;
+      transition: right  .2s ease-in-out;
+      &.open{
+        right: 0vw;
+      }
+    }
     .route {
       opacity: 1;
+      transition: left .2s ease-in-out;
+      left: 0vw;
       &.hide {
-        opacity: 0.5;
-        filter: blur(3px);
-      }
-      &.mute {
-        opacity: 0.5;
-        filter: blur(3px);
-      }
+        left: -100vw;
+      }      
     }
-    .dekstop-nav {
-      display: none;
-    }
-
     router-outlet {
       width: 100%;
     }
   }
-  .compact-nav {
-    display: flex;
-    position: fixed;
-    top: 55px;
-    width: 100%;
-    left: 0;
-    transition: all 0.2s ease-in-out;
-    pointer-events: none;
-    opacity: 0;
-    overflow-y: auto;
-    height: calc(100dvh - 65px);
-    padding: 10px;
-    z-index: 30;
-    align-items: center;
-    justify-content: center;
-    &.open {
-      top: 65px;
-      pointer-events: all;
-      opacity: 1;
-      flex-direction: column;
-    }
-    &::-webkit-scrollbar {
-      height: 0px;
-      width: 2px;
-    }
-  }
+  
   header {
-    padding: 10px 0px;
-
+    height: 70px;
+    padding: 10px 0px; 
     .logo-section {
       img {
         height: 30px;
@@ -248,81 +203,28 @@ header {
       }
     }
     nav {
+      .context-menu{
+        display: none;
+      }
       button {
-        background-color: #473d8763;
-
+        background-color: #ffffff00;
+        border: none;
         &.btn-menu {
           display: block;
         }
-        &.btn-apps {
+      }    
+    }
+    &.unauth{
+      nav{
+        .context-menu{
           display: block;
         }
-      }
-      .context-menu {
-        position: absolute;
-        opacity: 0;
-        right: 0px;
-        transition: all 0.2s ease-in-out;
-        top: 60px;
-        flex-direction: column;
-        pointer-events: none;
-        width: 175px;
-        &.open {
-          top: 70px;
-          opacity: 1;
-          pointer-events: all;
-        }
-        div,
-        button,
-        a {
-          height: 50px;
-          width: 100%;
-          border-radius: 15px;
-        }
-        .lang {
-          button {
-            border-radius: 0;
-          }
-          height: 50px;
+        .btn-menu{
+          display: none;
         }
       }
+      
     }
   }
 }
 
-header.unauth {
-  nav {
-    .context-menu,
-    .compact-nav {
-      display: flex;
-      position: relative;
-      opacity: 1;
-      top: 0px;
-      width: max-content;
-      pointer-events: all;
-      padding: 0px;
-      height: 50px;
-    }
-    button {
-      &.btn-menu,
-      &.btn-apps {
-        display: none;
-      }
-    }
-    .lang {
-      button {
-        width: 40px;
-      }
-    }
-  }
-}
-
-.main-container.unauth {
-  .route {
-    max-width: 1050px;
-  }
-
-  .compact-nav {
-    display: block;
-  }
-}

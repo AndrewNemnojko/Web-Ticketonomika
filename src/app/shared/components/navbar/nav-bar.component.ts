@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { NavLink } from '../../models/nav-link.model';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
@@ -10,12 +10,20 @@ import { AuthService } from '../../../core/services/auth.service';
   styleUrl: './nav-bar.component.scss',
 })
 export class NavBarComponent {
+  private router = inject(Router);
+  private authService = inject(AuthService);
   isAuth = false;
-  constructor(authService: AuthService) {
-    authService.isAuthenticated$.subscribe((isAuth) => {
+  
+  constructor() {
+    this.authService.isAuthenticated$.subscribe((isAuth) => {
       this.isAuth = isAuth;
       console.log(isAuth);
     });
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/info']);
   }
 
   links: NavLink[] = [
@@ -24,41 +32,48 @@ export class NavBarComponent {
       icon: '/svg/box.svg',
       route: 'drewards',
       authOnly: true,
+      open: true
     },
     {
-      label: 'Рейтинги (soon)',
+      label: 'Рейтинги',
       icon: '/svg/stat.svg',
       route: 'stats',
       authOnly: true,
+      open: false
     },
     {
-      label: 'Матеріали (soon)',
+      label: 'Матеріали',
       icon: '/svg/material.svg',
       route: 'materials',
       authOnly: true,
+      open: false
     },
     {
-      label: 'Біржа (soon)',
+      label: 'Біржа',
       icon: '/svg/market.svg',
       route: 'market',
       authOnly: true,
+      open: false
     },
     {
-      label: 'Казино (зачинено)',
+      label: 'Казино',
       icon: '/svg/casino.svg',
       route: 'casino',
       authOnly: true,
+      open: false
     },
     {
       label: 'Увійти',
       icon: '/svg/key.svg',
       route: 'signin',
       authOnly: false,
+      open: true
     },
     {
-      label: 'Про тікетономіку',
+      label: 'Тікетономіка',
       icon: '/svg/info.svg',
       route: 'info',
+      open: true
     },
   ];
 }

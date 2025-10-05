@@ -11,6 +11,7 @@ import {
   NavigationEnd,
   Router,
   RouterLink,
+  RouterLinkActive,
   RouterOutlet,
 } from '@angular/router';
 import { routeTransition } from '../../../../route-transition';
@@ -20,7 +21,7 @@ import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-public-board',
-  imports: [RouterOutlet, NavBarComponent, RouterLink],
+  imports: [RouterOutlet, NavBarComponent, RouterLink, RouterLinkActive],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
   animations: [routeTransition],
