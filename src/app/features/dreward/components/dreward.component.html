@@ -1,33 +1,36 @@
 <div class="dreward-block">
   <h3 class="title">Щоденний бокс</h3>
 
-  <div class="card today-reward">
+  <div class="card today-reward" [class]="StateIsAvalible ? 'available' : ''">
     <div class="slot-container" [class.fade-out]="todayState() === 'done'">
+      <div class="border-gradient left"></div>
       <div class="rewards-strip" #strip>
         @for (item of rewardsList(); track $index) {
           <div class="reward" [class.winning]="isWinning($index)">
             <img src="{{ item.material | iconMaterial }}" />
-            <span>× {{ item.amount }}</span>
+            <span class="amount">{{ item.amount }}</span>
+             <span class="name">{{ item.material }}</span>
           </div>
         }
       </div>
+      <div class="border-gradient right"></div>
     </div>
-
+    
     @if (todayState() === "available") {
       <div class="overlay">
-        <div class="chest" (click)="openBox()">
+        <div class="chest "  (click)="openBox()">
           <img class="dbox" src="/svg/dbox.svg" />
-          <p class="open-btn">(click to claim)</p>
+          <p class="open-btn">Доступна нагорода!</p>
         </div>
       </div>
     }
 
     @if (todayState() === "done" && todayReward()) {
       <div class="overlay">
-        <div class="reward-final">
+        <div class="reward-final" >
           <div class="reward-card">
             <img src="{{ todayReward()?.material | iconMaterial }}" />
-            <span>x{{ todayReward()?.amount }}</span>
+            <span>{{ todayReward()?.amount }}</span>
           </div>
           <h3>
             🌟 Вітаю, Ви отримали {{ todayReward()?.amount }}

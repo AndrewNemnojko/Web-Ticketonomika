@@ -2,8 +2,8 @@ import { Reward } from '../shared/models/reward.model';
 
 // Сегодняшняя награда
 export const MOCK_TODAY_REWARD: Reward = {
-  material: 'amber',
-  amount: 18,
+  material: 'obsidian',
+  amount: 5,
   date: new Date(), // можно null для фейковых наград
 };
 

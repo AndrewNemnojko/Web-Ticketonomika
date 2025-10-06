@@ -5,7 +5,8 @@ import { IconMaterialPipe } from '../../../shared/pipes/icon-material.pipe';
 import { interval, map, startWith } from 'rxjs';
 import { DatePipe } from '@angular/common';
 
-type TodayRewardState = 'available' | 'opening' | 'done';
+type TodayRewardState = 'available' | 'rolling' | 'done';
+
 
 @Component({
   selector: 'app-dreward',
@@ -14,11 +15,12 @@ type TodayRewardState = 'available' | 'opening' | 'done';
   imports: [IconMaterialPipe, DatePipe],
 })
 export class DrewardComponent {
-  todayState = signal<TodayRewardState>('available');
+  todayState = signal<TodayRewardState>('done');
   todayReward = signal<Reward | null>(null);
   rewardsList = signal<Reward[]>([]);
   winningIndex = signal<number | null>(null);
   rewardsHistory = signal<Reward[]>([]);
+
 
   @ViewChild('strip') stripRef!: ElementRef<HTMLDivElement>;
 
@@ -31,8 +33,12 @@ export class DrewardComponent {
     this.rewardsHistory.set(await this.drewardService.getRewardsHistory());
   }
 
+  get StateIsAvalible(){
+    return this.todayState() === "available";
+  }
+
   async openBox() {
-    this.todayState.set('opening');
+    this.todayState.set('rolling');
     const result = await this.drewardService.OpenBox();
     this.rewardsList.set(result.rewards);
     this.winningIndex.set(result.winningIndex);

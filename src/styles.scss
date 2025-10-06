@@ -1,34 +1,5 @@
 @import url("./reset.styles.scss");
 
-@font-face {
-  font-family: "Inter";
-  src: url("/fonts/Inter/Inter_28pt-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("/fonts/Inter/Inter_24pt-SemiBold.ttf") format("truetype");
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("/fonts/Inter/Inter_18pt-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("/fonts/Inter/Inter_18pt-Medium.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-}
-
-//
 
 @font-face {
   font-family: "Geologica";
@@ -58,7 +29,6 @@
   font-style: normal;
 }
 
-//
 
 :root {
   --reward-size: 60px;
@@ -80,12 +50,9 @@
 }
 
 body {
-  background: #2a2357;
   background: #18162e;
-  font-family: monospace;
   min-height: 100vh;
   color: #ffffff;
-  font-family: "Inter", sans-serif;
   font-family: "Geologica", sans-serif;
   font-weight: 400;
 }
