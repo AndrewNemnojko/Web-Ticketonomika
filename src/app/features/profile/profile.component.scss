@@ -4,11 +4,11 @@
   align-items: center;
   gap: 10px;
   h3.title {
-      text-align: center;
-      font-weight: 600;
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
   .card {
     border-radius: 15px;
     width: 100%;
@@ -31,11 +31,9 @@
       margin: 0;
     }
 
-    
-
     h4 {
       font-weight: 500;
-      font-size: 13px;     
+      font-size: 13px;
     }
 
     p {
@@ -69,7 +67,7 @@
       justify-content: center;
       padding: 10px;
       background-color: #ffffff0d;
-      
+
       img.avatar {
         width: 80px;
         aspect-ratio: 1;
@@ -77,12 +75,12 @@
         border: 3px solid rgba(255, 255, 255, 0.492);
         object-fit: cover;
       }
-      .account{
+      .account {
         display: flex;
         padding: 20px;
         flex-direction: column;
         align-items: center;
-        .profile-name{
+        .profile-name {
           display: flex;
           text-align: center;
           gap: 10px;
@@ -90,25 +88,25 @@
           align-items: center;
           justify-content: center;
         }
-        .type{
+        .type {
           display: flex;
           padding: 10px 20px;
           border-radius: 30px;
           max-width: 180px;
           margin-top: 10px;
           justify-content: center;
-          &.citizen{           
+          &.citizen {
             background-color: #3e65a1db;
           }
-          &.rezident{
-             background-color: citizen;
+          &.rezident {
+            background-color: citizen;
           }
-          &.migrant{           
+          &.migrant {
             background-color: #4cb64cdb;
           }
         }
       }
-      .balance{
+      .balance {
         display: flex;
         width: 100%;
         border-top: 2px solid #ffffff08;
@@ -157,16 +155,17 @@
           gap: 10px;
           align-items: center;
           width: 100%;
-          justify-content: space-between;       
+          justify-content: space-between;
 
-          span, a {
+          span,
+          a {
             font-weight: 500;
             font-size: 13px;
-            &::first-letter{
+            &::first-letter {
               text-transform: uppercase;
             }
             &.amount {
-              font-size: 13px;           
+              font-size: 13px;
               padding: 5px;
               border-radius: 5px;
               background-color: #0c0c0c6e;
@@ -175,19 +174,19 @@
         }
       }
     }
-    
-    &.awards{
-      ul.awards-list{
-        li{
+
+    &.awards {
+      ul.awards-list {
+        li {
           border-bottom: 2px solid #ffffff17;
           border-radius: 0;
           padding: 20px;
         }
       }
     }
-    &.jobs{
-      ul.jobs-list{
-        li{
+    &.jobs {
+      ul.jobs-list {
+        li {
           border-bottom: 2px solid #ffffff17;
           border-radius: 0;
           padding: 20px;
@@ -196,20 +195,19 @@
     }
   }
   app-awards-carousel {
-      width: 100%;
-    }
+    width: 100%;
+  }
 }
 
 @media (max-width: 600px) {
   .profile-block {
     gap: 30px;
     .card {
-      
       h4 {
         text-align: center;
       }
-      &.materials{
-        ul.materials-list{
+      &.materials {
+        ul.materials-list {
           grid-template-columns: 1fr 1fr;
         }
       }

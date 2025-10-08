@@ -8,13 +8,7 @@ import {
   NgZone,
 } from '@angular/core';
 import { DatePipe } from '@angular/common';
-
-export interface Award {
-  id: number;
-  name: string;
-  issuance: Date;
-  description: string;
-}
+import { Award } from '../../../../shared/models/award.model';
 
 @Component({
   selector: 'app-awards-carousel',
@@ -26,10 +20,11 @@ export interface Award {
 export class AwardsCarouselComponent implements AfterViewInit, OnDestroy {
   @Input() awards: Award[] = [];
 
-  @ViewChild('carousel', { static: false }) carousel!: ElementRef<HTMLDivElement>;
+  @ViewChild('carousel', { static: false })
+  carousel!: ElementRef<HTMLDivElement>;
 
-  visibleCount = 1; 
-  visiblePage = 0; 
+  visibleCount = 1;
+  visiblePage = 0;
   currentPage = 0;
 
   private resizeHandler = () => this.updateVisibleCount();
@@ -53,19 +48,17 @@ export class AwardsCarouselComponent implements AfterViewInit, OnDestroy {
     const width = el.clientWidth;
     const page = Math.round(scrollLeft / width);
 
-    // ⚡ ВАЖНО: обновляем в Angular зоне
     this.zone.run(() => {
       this.currentPage = Math.max(0, Math.min(page, this.pageCount - 1));
       this.visiblePage = this.currentPage;
     });
   }
 
-
-
-
-
   ngOnDestroy(): void {
-    this.carousel?.nativeElement?.removeEventListener('scroll', this.scrollHandler);
+    this.carousel?.nativeElement?.removeEventListener(
+      'scroll',
+      this.scrollHandler,
+    );
     window.removeEventListener('resize', this.resizeHandler);
   }
 
@@ -101,7 +94,10 @@ export class AwardsCarouselComponent implements AfterViewInit, OnDestroy {
     const target = Math.max(0, Math.min(this.pageCount - 1, index));
     const el = this.carousel.nativeElement;
     const pageWidth = el.clientWidth;
-    el.scrollTo({ left: target * pageWidth, behavior: smooth ? 'smooth' : 'auto' });
+    el.scrollTo({
+      left: target * pageWidth,
+      behavior: smooth ? 'smooth' : 'auto',
+    });
     this.visiblePage = target;
   }
 

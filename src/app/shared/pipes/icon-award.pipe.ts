@@ -9,9 +9,9 @@ export class IconAwardPipe implements PipeTransform {
     if (!value) return '❕';
 
     const map: Record<string, string> = {
-      'DF-L3': '🛡️', 
-      'CU-L3': '🎨', 
-      'SO-L3': '🤝', 
+      'DF-L3': '🛡️',
+      'CU-L3': '🎨',
+      'SO-L3': '🤝',
       'CU-L2': '🎵',
       'DF-L2': '⚔️',
       'SO-L2': '⚙️',

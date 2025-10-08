@@ -7,7 +7,6 @@ import { DatePipe } from '@angular/common';
 
 type TodayRewardState = 'available' | 'rolling' | 'done';
 
-
 @Component({
   selector: 'app-dreward',
   templateUrl: './dreward.component.html',
@@ -21,7 +20,6 @@ export class DrewardComponent {
   winningIndex = signal<number | null>(null);
   rewardsHistory = signal<Reward[]>([]);
 
-
   @ViewChild('strip') stripRef!: ElementRef<HTMLDivElement>;
 
   constructor(private drewardService: DrewardService) {}
@@ -33,8 +31,8 @@ export class DrewardComponent {
     this.rewardsHistory.set(await this.drewardService.getRewardsHistory());
   }
 
-  get StateIsAvalible(){
-    return this.todayState() === "available";
+  get StateIsAvalible() {
+    return this.todayState() === 'available';
   }
 
   async openBox() {

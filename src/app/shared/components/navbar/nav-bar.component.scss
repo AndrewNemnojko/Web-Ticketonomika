@@ -8,27 +8,27 @@ nav {
   overflow-y: scroll;
   border-radius: 20px;
   padding: 10px;
-  .nav-list{
+  .nav-list {
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
-  .context-menu{
+  .context-menu {
     display: none;
     div,
     button,
-    a {     
+    a {
       width: 100%;
       border-radius: 10px;
-      
-      img{
+
+      img {
         height: 20px;
       }
     }
     .lang {
       button {
         border-radius: 0;
-      }   
+      }
     }
   }
   &.unauth {
@@ -68,16 +68,16 @@ nav {
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease-in-out;
-    border: 1px solid rgba(255, 255, 255, 0.088);   
+    border: 1px solid rgba(255, 255, 255, 0.088);
     &:hover {
       cursor: pointer;
       background-color: #779cec3d;
     }
-    &.close{  
+    &.close {
       background-color: #00000017;
-      pointer-events: none;    
+      pointer-events: none;
       color: #ffffff5c;
-      img{
+      img {
         opacity: 0.3;
       }
     }
@@ -89,14 +89,12 @@ nav {
       font-size: 13px;
     }
 
-    &.active-link { 
+    &.active-link {
       background-color: #487ded3d;
       span {
         font-weight: 600;
       }
     }
-
-    
   }
 
   .icon {
@@ -117,7 +115,6 @@ nav {
   }
 }
 @media (max-width: 780px) {
-  
   nav {
     background-color: #ffffff00;
     display: flex;
@@ -135,20 +132,19 @@ nav {
       span {
         display: block;
       }
-      &:hover{
+      &:hover {
         box-shadow: inset 0px 0px 15px 0px #372f86;
       }
     }
-    .nav-list{
+    .nav-list {
       display: grid;
       gap: 10px;
       grid-template-columns: 1fr 1fr;
     }
-    .context-menu{
+    .context-menu {
       display: grid;
       gap: 10px;
       grid-template-columns: 3fr 7fr;
     }
   }
 }
-

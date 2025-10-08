@@ -9,16 +9,16 @@
           <div class="reward" [class.winning]="isWinning($index)">
             <img src="{{ item.material | iconMaterial }}" />
             <span class="amount">{{ item.amount }}</span>
-             <span class="name">{{ item.material }}</span>
+            <span class="name">{{ item.material }}</span>
           </div>
         }
       </div>
       <div class="border-gradient right"></div>
     </div>
-    
+
     @if (todayState() === "available") {
       <div class="overlay">
-        <div class="chest "  (click)="openBox()">
+        <div class="chest" (click)="openBox()">
           <img class="dbox" src="/svg/dbox.svg" />
           <p class="open-btn">Доступна нагорода!</p>
         </div>
@@ -27,7 +27,7 @@
 
     @if (todayState() === "done" && todayReward()) {
       <div class="overlay">
-        <div class="reward-final" >
+        <div class="reward-final">
           <div class="reward-card">
             <img src="{{ todayReward()?.material | iconMaterial }}" />
             <span>{{ todayReward()?.amount }}</span>

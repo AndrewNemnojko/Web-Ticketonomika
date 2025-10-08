@@ -1,6 +1,5 @@
 @import url("./reset.styles.scss");
 
-
 @font-face {
   font-family: "Geologica";
   src: url("/fonts/Geologica/Geologica-Bold.ttf") format("truetype");
@@ -29,15 +28,14 @@
   font-style: normal;
 }
 
-
 :root {
   --reward-size: 60px;
   --visible-count: 5;
-  --awards-count: 3
+  --awards-count: 3;
 }
-@media screen and (max-width: 1200px){
+@media screen and (max-width: 1200px) {
   :root {
-    --awards-count: 2
+    --awards-count: 2;
   }
 }
 @media screen and (max-width: 799px) {
@@ -46,9 +44,9 @@
     --visible-count: 5;
   }
 }
-@media screen and (max-width: 650px){
+@media screen and (max-width: 650px) {
   :root {
-    --awards-count: 1
+    --awards-count: 1;
   }
 }
 @media screen and (min-width: 800px) {

@@ -39,7 +39,7 @@ export const routeTransition = trigger('routeTransition', [
         ':leave',
         [
           animate(
-            '400ms ease',
+            '300ms ease',
             style({
               opacity: 0,
               transform: 'translateY(10px)',
@@ -53,7 +53,7 @@ export const routeTransition = trigger('routeTransition', [
         ':enter',
         [
           animate(
-            '400ms ease',
+            '450ms ease',
             style({
               opacity: 1,
               transform: 'translateY(0px)',

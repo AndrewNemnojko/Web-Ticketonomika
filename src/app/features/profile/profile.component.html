@@ -3,26 +3,29 @@
     <article class="card profile">
       <img [src]="u.avatar || '/svg/image.svg'" alt="avatar" class="avatar" />
       <div class="account">
-        <h2 class="profile-name">{{ u.name }} <p>{{ u.username }}</p></h2>        
-        <div class="type" [class]=" u.legalStatus.toLowerCase()">
-          <p>{{ u.legalStatus.toUpperCase() }}: </p>
+        <h2 class="profile-name">
+          {{ u.name }}
+          <p>{{ u.username }}</p>
+        </h2>
+        <div class="type" [class]="u.legalStatus.toLowerCase()">
+          <p>{{ u.legalStatus.toUpperCase() }}:</p>
           <p>{{ u.passportId }}</p>
         </div>
       </div>
       <div class="balance">
-          <div class="tickets">
-            <h4>Тікетів:</h4>
-            <h3>
-              {{ u.tickets || 0 }}             
-            </h3>
-          </div>
-          <div class="materials">
-            <h4>Матеріали:</h4>
-            <h3>
-              {{ this.totalMaterialsCost }}            
-            </h3>
-          </div>
+        <div class="tickets">
+          <h4>Тікетів:</h4>
+          <h3>
+            {{ u.tickets || 0 }}
+          </h3>
         </div>
+        <div class="materials">
+          <h4>Матеріали:</h4>
+          <h3>
+            {{ this.totalMaterialsCost }}
+          </h3>
+        </div>
+      </div>
     </article>
 
     @if (u.materials!.length) {
@@ -37,7 +40,9 @@
                 alt="{{ mat.name }}"
               />
               <div class="display">
-                <a href="/materials/{{mat.name}}.png" class="name">{{ mat.name }}</a>
+                <a href="/materials/{{ mat.name }}.png" class="name">{{
+                  mat.name
+                }}</a>
                 <span class="amount">{{ mat.amount }}</span>
               </div>
             </li>
@@ -45,8 +50,11 @@
         </ul>
       </section>
     }
-    
-    <app-awards-carousel [awards]="user.awards" class="awards"></app-awards-carousel>
+
+    <app-awards-carousel
+      [awards]="user.awards"
+      class="awards"
+    ></app-awards-carousel>
 
     @if (u.jobs!.length) {
       <section class="card jobs">

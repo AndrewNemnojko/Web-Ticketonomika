@@ -1,9 +1,9 @@
 h3.title {
-      text-align: center;
-      font-weight: 600;
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
 .carousel-container {
   position: relative;
   width: 100%;
@@ -13,57 +13,65 @@ h3.title {
 }
 
 .carousel-wrapper {
-    width: 100%;
-    display: grid;
-    grid-auto-columns: calc((100% - 20px) / var(--awards-count));
-    gap: 10px;
-    grid-auto-flow: column;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;  
-    &::-webkit-scrollbar {
-        display: none;
-    }
+  width: 100%;
+  display: grid;
+  grid-auto-columns: calc((100% - 20px) / var(--awards-count));
+  gap: 10px;
+  grid-auto-flow: column;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  border-radius: 15px;
+  scroll-behavior: smooth;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .card {
   scroll-snap-align: start;
   background: #ffffff0d;
-  border-radius: 12px;
-  padding: 1rem;
+  border-radius: 15px;
+  padding: 20px;
   color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-
   .icon {
-    font-size: 2rem;
+    font-size: 25px;
     text-align: center;
     margin-bottom: 0.5rem;
   }
-    .content {
-        display: flex;
-        height: 100%;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-  .name { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; text-align: center;}
-  .desc { font-size: 0.9rem; color: #bbb; margin-bottom: 0.5rem; }
-  .date { font-size: 0.8rem; color: #888; text-align: right; }
+  .content {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .name {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    text-align: center;
+  }
+  .date {
+    font-size: 0.8rem;
+    color: #ffffff;
+    text-align: right;
+  }
 }
 @media (max-width: 1200px) {
-    .carousel-wrapper{
-        grid-auto-columns: calc((100% - 10px) / var(--awards-count));
-    }
+  .carousel-wrapper {
+    grid-auto-columns: calc((100% - 10px) / var(--awards-count));
+  }
 }
 @media (max-width: 650px) {
-    .carousel-wrapper{
-        grid-auto-columns: calc(100%  / var(--awards-count));
-    }
-    .scroll-btn{
-        display: none;
-    }
+  .carousel-wrapper {
+    grid-auto-columns: calc(100% / var(--awards-count));
+  }
+  .scroll-btn {
+    display: none;
+  }
 }
 .scroll-btn {
   position: absolute;
@@ -78,24 +86,29 @@ h3.title {
   border-radius: 50%;
   cursor: pointer;
   z-index: 10;
-    transition: background .2s ease-in-out;
-  &.left { left: 10px; }
-  &.right { right: 10px; }
+  transition: background 0.2s ease-in-out;
+  &.left {
+    left: 10px;
+  }
+  &.right {
+    right: 10px;
+  }
 
-  &:hover { background: #ffffff0d; }
+  &:hover {
+    background: #ffffff0d;
+  }
 }
 
 .indicators {
   border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    //border: 1px solid #ffffff14;
-    margin: 5px 0px;
-    padding: 10px;
-    gap: 10px;
+  display: flex;
+  justify-content: center;
+  margin: 5px 0px;
+  padding: 10px;
+  gap: 10px;
 }
 
-.dot {
+.dot-page {
   width: 10px;
   height: 10px;
   background: #ffffff1f;
@@ -103,8 +116,10 @@ h3.title {
   border: none;
   cursor: pointer;
   padding: 0;
-    transition: background .2s ease-in-out;
-  &.active { background: #fff; }
+  transition: background 0.2s ease-in-out;
+  &.active {
+    background: #fff;
+  }
 }
 
 .empty {
@@ -112,7 +127,7 @@ h3.title {
   padding: 20px;
   width: 100%;
   border-radius: 15px;
-    background: #ffffff0d;
+  background: #ffffff0d;
   text-align: center;
   font-size: 15px;
 }
