@@ -1,0 +1,66 @@
+.carousel-wrapper {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carousel {
+  display: flex;
+  gap: 1rem;
+  overflow: hidden;
+    width: 100%;
+  overflow-x: scroll;
+  padding-bottom: 0.5rem;
+
+  /* скрыть полосу прокрутки */
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.card {
+  flex: 0 0 260px;
+  background: #ffffff0d;
+  border-radius: 1rem;
+  padding: 1rem;
+  color: #fff;
+  scroll-snap-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .icon {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .name {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+  }
+
+  .desc {
+    font-size: 0.9rem;
+    color: #bbb;
+    margin-bottom: 0.5rem;
+  }
+
+  .date {
+    font-size: 0.8rem;
+    color: #888;
+    text-align: right;
+  }
+}
+
+.empty {
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #ffffff0d;
+    text-align: center;
+}

@@ -3,11 +3,12 @@ import { IconMaterialPipe } from '../../shared/pipes/icon-material.pipe';
 import { AuthService } from '../../core/services/auth.service';
 import { User } from '../../shared/models/user.model';
 import { Subscription } from 'rxjs';
+import { AwardsCarouselComponent } from './components/awards-carousel/awards-carousel.component';
 
 
 @Component({
   selector: 'app-profile',
-  imports: [IconMaterialPipe],
+  imports: [IconMaterialPipe, AwardsCarouselComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
 })

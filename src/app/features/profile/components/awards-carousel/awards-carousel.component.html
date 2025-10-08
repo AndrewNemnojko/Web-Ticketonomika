@@ -1,1 +1,22 @@
-<p>awards-carousel works!</p>
+<section class="carousel-wrapper">
+  @if (awards.length === 0) {
+    <p class="empty">Нагород немає. Де ви були всі ці 8</p>
+  } @else {
+    <div class="carousel">
+      @for (award of awards; track award.id) {
+        <div class="card">
+          <div class="icon">
+            {{ award.name.split(' ')[0] }}
+          </div>
+          <div class="content">
+            <h3 class="name">{{ award.name }}</h3>
+            <p class="desc">{{ award.description }}</p>
+            <p class="date">
+              {{ award.issuance | date: 'dd.MM.yyyy' }}
+            </p>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</section>

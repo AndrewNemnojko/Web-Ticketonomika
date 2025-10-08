@@ -45,19 +45,8 @@
         </ul>
       </section>
     }
-
-    @if (u.awards!.length) {
-      <section class="card awards">
-        <h3 class="title">Нагороди</h3>
-        <ul class="awards-list values">
-          @for (award of u.awards; track award.id) {
-            <li>
-              <h4>{{ award.name }}</h4>
-            </li>
-          }
-        </ul>
-      </section>
-    }
+    <h3 class="title">Відзнаки</h3>
+    <app-awards-carousel [awards]="user.awards" class="awards"></app-awards-carousel>
 
     @if (u.jobs!.length) {
       <section class="card jobs">

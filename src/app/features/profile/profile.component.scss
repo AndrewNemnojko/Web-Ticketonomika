@@ -78,12 +78,17 @@
         object-fit: cover;
       }
       .account{
+        display: flex;
         padding: 20px;
+        flex-direction: column;
+        align-items: center;
         .profile-name{
           display: flex;
+          text-align: center;
           gap: 10px;
           flex-wrap: wrap;
           align-items: center;
+          justify-content: center;
         }
         .type{
           display: flex;
@@ -170,6 +175,7 @@
         }
       }
     }
+    
     &.awards{
       ul.awards-list{
         li{
@@ -189,6 +195,9 @@
       }
     }
   }
+  app-awards-carousel {
+      width: 100%;
+    }
 }
 
 @media (max-width: 600px) {
