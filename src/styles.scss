@@ -33,15 +33,24 @@
 :root {
   --reward-size: 60px;
   --visible-count: 5;
+  --awards-count: 3
 }
-
+@media screen and (max-width: 1200px){
+  :root {
+    --awards-count: 2
+  }
+}
 @media screen and (max-width: 799px) {
   :root {
     --reward-size: 60px;
     --visible-count: 5;
   }
 }
-
+@media screen and (max-width: 650px){
+  :root {
+    --awards-count: 1
+  }
+}
 @media screen and (min-width: 800px) {
   :root {
     --reward-size: 70px;
