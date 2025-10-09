@@ -1,7 +1,7 @@
 <div class="profile-block">
   @if (user; as u) {
     <article class="card profile">
-      <img [src]="u.avatar || '/svg/image.svg'" alt="avatar" class="avatar" />
+      <img [src]="u.avatar || '/svg/image.svg'" alt="avatar" class="avatar" (error)="onImageError($event)" />
       <div class="account">
         <h2 class="profile-name">
           {{ u.name }}

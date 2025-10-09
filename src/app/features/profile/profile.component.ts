@@ -33,4 +33,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
     const sum = this.user.materials.reduce((s, m) => s + m.price * m.amount, 0);
     return Math.round(sum * 100) / 100;
   }
+
+  onImageError(event: Event) {
+    const img = event.target as HTMLImageElement;
+    img.src = '/svg/image.svg';
+  }
 }
