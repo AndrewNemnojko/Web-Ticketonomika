@@ -18,6 +18,8 @@ import { routeTransition } from '../../../../route-transition';
 import { filter, Subscription } from 'rxjs';
 import { NavBarComponent } from '../navbar/nav-bar.component';
 import { AuthService } from '../../../core/services/auth.service';
+import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
+import { ModalService } from '../modal/modal.service';
 
 @Component({
   selector: 'app-public-board',
@@ -39,7 +41,7 @@ export class LayoutComponent implements OnDestroy, OnInit {
   private routerSub!: Subscription;
   private authSub!: Subscription;
 
-  constructor() {}
+  constructor(private modal: ModalService) {}
 
   get authClass(): string {
     return this.isAuthenticated ? '' : 'unauth';
@@ -65,8 +67,18 @@ export class LayoutComponent implements OnDestroy, OnInit {
   }
 
   logout() {
-    this.authService.logout();
-    this.router.navigate(['/info']);
+    const modal$ = this.modal.open(ConfirmModalComponent, {
+      title: 'Вихід з аккаунта',
+      success: 'Вийти',
+      abort: 'Передумав'
+    });
+
+    modal$.subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        this.authService.logout();
+        this.router.navigate(['/info']);
+      }
+    });
   }
 
   @ViewChild('mainContainer', { static: true })

@@ -15,12 +15,7 @@ import { Subject } from 'rxjs';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div
-      class="backdrop"
-      [class.visible]="isVisible"
-      (click)="close()"
-    ></div>
-
+    <div class="backdrop" [class.visible]="isVisible" (click)="close()"></div>
     <div class="modal" [class.visible]="isVisible">
       <ng-template #container></ng-template>
     </div>
@@ -29,16 +24,13 @@ import { Subject } from 'rxjs';
     .backdrop {
       position: fixed;
       inset: 0;
-      background: #1d1d22d9;
-        backdrop-filter: blur(2px);
+      background: #18162e9e;
+      backdrop-filter: blur(2px);
       opacity: 0;
       transition: all 0.3s ease;
       z-index: 20;
     }
-    .backdrop.visible {
-      background: rgba(0, 0, 0, 0.5);
-      opacity: 1;
-    }
+    .backdrop.visible { opacity: 1; }
 
     .modal {
       position: fixed;
@@ -48,26 +40,22 @@ import { Subject } from 'rxjs';
       background: #2b2d4c;
       padding: 20px;
       border-radius: 20px;
-      overflow-y: scroll;
-      min-height: 200px;
-      max-height: calc(100dvh - 100px);
       min-width: 300px;
       max-width: 400px;
+      min-height: 140px;
+      max-height: calc(100dvh - 100px);
+      overflow-y: auto;
       opacity: 0;
       transition: all 0.3s ease;
       z-index: 1000;
     }
-
-    .modal.visible {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-    }
+    .modal.visible { opacity: 1; transform: translate(-50%, -50%) scale(1); }
   `]
 })
 export class ModalHostComponent implements AfterViewInit, OnDestroy {
   @ViewChild('container', { read: ViewContainerRef }) container!: ViewContainerRef;
   private componentRef?: ComponentRef<any>;
-  private onClose$ = new Subject<any>();
+  private onClose$?: Subject<any>;
   isVisible = false;
 
   ngAfterViewInit() {
@@ -80,7 +68,9 @@ export class ModalHostComponent implements AfterViewInit, OnDestroy {
 
     if (inputs) Object.assign(this.componentRef.instance, inputs);
 
+    this.onClose$ = new Subject<any>();
     const inst = this.componentRef.instance as any;
+
     if (inst.closed && typeof inst.closed.subscribe === 'function') {
       inst.closed.subscribe((res: any) => this.close(res));
     }
@@ -92,13 +82,13 @@ export class ModalHostComponent implements AfterViewInit, OnDestroy {
     this.isVisible = false;
 
     setTimeout(() => {
-      this.onClose$.next(result);
-      this.onClose$.complete();
+      this.onClose$?.next(result);
+      this.onClose$?.complete();
       this.container.clear();
     }, 300);
   }
 
   ngOnDestroy() {
-    this.onClose$.complete();
+    this.onClose$?.complete();
   }
 }

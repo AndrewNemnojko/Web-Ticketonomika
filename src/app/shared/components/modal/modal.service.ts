@@ -1,4 +1,4 @@
-import { Injectable, ApplicationRef, ComponentRef, createComponent, EnvironmentInjector } from '@angular/core';
+import { Injectable, ApplicationRef, ComponentRef, createComponent, EnvironmentInjector, Type } from '@angular/core';
 import { ModalHostComponent } from './modal-host.component';
 import { Subject } from 'rxjs';
 
@@ -11,7 +11,7 @@ export class ModalService {
     private injector: EnvironmentInjector
   ) {}
 
-  open<T>(component: any, inputs?: Partial<T>) {
+  open<T>(component: Type<T>, inputs?: Partial<T>): Subject<any> {
     if (this.modalRef) this.close();
 
     this.modalRef = createComponent(ModalHostComponent, {
@@ -21,14 +21,21 @@ export class ModalService {
     this.appRef.attachView(this.modalRef.hostView);
     document.body.appendChild(this.modalRef.location.nativeElement);
 
+    const result$ = new Subject<any>();
+
     setTimeout(() => {
-        const close$ = this.modalRef!.instance.open(component, inputs);
-        close$.subscribe(() => this.close());
+      const modal$ = this.modalRef!.instance.open(component, inputs);
+      modal$.subscribe(res => {
+        result$.next(res);
+        result$.complete();
+        this.close();
+      });
     });
+
     document.body.style.overflow = 'hidden';
-     return new Subject<any>();
+    return result$;
   }
-  
+
   close() {
     if (this.modalRef) {
       this.appRef.detachView(this.modalRef.hostView);

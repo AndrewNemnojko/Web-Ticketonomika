@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { AwardsCarouselComponent } from '../awards/awards-carousel/awards-carousel.component';
 import { ModalService } from '../../shared/components/modal/modal.service';
 import { AwardDetailsComponent } from '../awards/award-details/award-details.component';
+import { Award } from '../../shared/models/award.model';
 
 @Component({
   selector: 'app-profile',
@@ -39,13 +40,5 @@ export class ProfileComponent implements OnInit, OnDestroy {
   onImageError(event: Event) {
     const img = event.target as HTMLImageElement;
     img.src = '/svg/image.svg';
-  }
-
-   constructor(private modal: ModalService) {}
-   open() {
-    this.modal.open(AwardDetailsComponent, { awardName: 'Лучший разработчик' })
-      .subscribe(result => {
-        if (result) console.log('Saved name:', result);
-      });
   }
 }

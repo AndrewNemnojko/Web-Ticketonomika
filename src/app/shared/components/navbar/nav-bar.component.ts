@@ -2,6 +2,8 @@ import { Component, inject } from '@angular/core';
 import { NavLink } from '../../models/nav-link.model';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
+import { ModalService } from '../modal/modal.service';
+import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-nav-bar',
@@ -14,7 +16,7 @@ export class NavBarComponent {
   private authService = inject(AuthService);
   isAuth = false;
 
-  constructor() {
+  constructor(private modal: ModalService) {
     this.authService.isAuthenticated$.subscribe((isAuth) => {
       this.isAuth = isAuth;
       console.log(isAuth);
@@ -22,8 +24,18 @@ export class NavBarComponent {
   }
 
   logout() {
-    this.authService.logout();
-    this.router.navigate(['/info']);
+    const modal$ = this.modal.open(ConfirmModalComponent, {
+      title: 'Вихід з аккаунта',
+      success: 'Вийти',
+      abort: 'Передумав'
+    });
+
+    modal$.subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        this.authService.logout();
+        this.router.navigate(['/info']);
+      }
+    });
   }
 
   links: NavLink[] = [
