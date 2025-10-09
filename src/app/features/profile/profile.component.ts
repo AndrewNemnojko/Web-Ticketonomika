@@ -3,7 +3,9 @@ import { IconMaterialPipe } from '../../shared/pipes/icon-material.pipe';
 import { AuthService } from '../../core/services/auth.service';
 import { User } from '../../shared/models/user.model';
 import { Subscription } from 'rxjs';
-import { AwardsCarouselComponent } from './components/awards-carousel/awards-carousel.component';
+import { AwardsCarouselComponent } from '../awards/awards-carousel/awards-carousel.component';
+import { ModalService } from '../../shared/components/modal/modal.service';
+import { AwardDetailsComponent } from '../awards/award-details/award-details.component';
 
 @Component({
   selector: 'app-profile',
@@ -37,5 +39,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
   onImageError(event: Event) {
     const img = event.target as HTMLImageElement;
     img.src = '/svg/image.svg';
+  }
+
+   constructor(private modal: ModalService) {}
+   open() {
+    this.modal.open(AwardDetailsComponent, { awardName: 'Лучший разработчик' })
+      .subscribe(result => {
+        if (result) console.log('Saved name:', result);
+      });
   }
 }
