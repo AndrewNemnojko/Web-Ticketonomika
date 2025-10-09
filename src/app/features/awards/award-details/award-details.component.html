@@ -1,0 +1,13 @@
+
+@if (award) {
+  <div class="award-card">
+    <div class="award-header">
+      <h4 class="award-name">{{ award.name }}</h4>
+      <span class="award-date">Дата видачі: {{ award.issuance | date:'mediumDate' }}</span>
+    </div>
+    <p class="award-description">{{ award.description }}</p>
+  </div>
+} 
+@else {
+  <p>Помилка завантаження. Сумно, сумно аж за край!</p>
+}

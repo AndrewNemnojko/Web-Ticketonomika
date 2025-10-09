@@ -1,0 +1,44 @@
+<h3 class="title">Відзнаки</h3>
+<div class="carousel-container">
+  @if (awards.length > 0) {
+    <button
+      class="scroll-btn left"
+      (click)="scrollLeft()"
+      aria-label="Previous"
+    >
+      <img src="/svg/arrow_left.svg" />
+    </button>
+
+    <div class="carousel-wrapper" #carousel>
+      @for (award of awards; track award.id) {
+        <div (click)="open(award)" class="card">
+          <div class="icon">{{ award.name.split(" ")[0] }}</div>
+
+          <div class="content">
+            <h3 class="name">{{ displayTitle(award) }}</h3>
+            <p class="date">{{ award.issuance | date: "dd.MM.yyyy" }}</p>
+          </div>
+        </div>
+      }
+    </div>
+
+    <button class="scroll-btn right" (click)="scrollRight()" aria-label="Next">
+      <img src="/svg/arrow_right.svg" />
+    </button>
+
+    @if (pageCount > 1) {
+      <div class="indicators">
+        @for (page of pages; track page) {
+          <button
+            class="dot-page"
+            [class.active]="page === visiblePage"
+            (click)="scrollToPage(page)"
+            [attr.aria-label]="'Go to page ' + (page + 1)"
+          ></button>
+        }
+      </div>
+    }
+  } @else {
+    <p class="empty">Відзнак немає. І де ви були усі ці 8 лєт?</p>
+  }
+</div>
