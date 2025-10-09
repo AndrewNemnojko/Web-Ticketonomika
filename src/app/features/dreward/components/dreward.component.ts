@@ -74,8 +74,32 @@ export class DrewardComponent {
       setTimeout(async () => {
         this.todayReward.set(await this.drewardService.getTodayReward());
         this.todayState.set('done');
+        this.showNotification(`🎁 Нагорода отримана!`, `Твоя нагорода: ${this.todayReward()?.material} - ${this.todayReward()?.amount}`);
       }, 600);
     };
+  }
+
+  //test
+  private showNotification(title: string, body: string) {
+    if (!('Notification' in window)) return;
+
+    if (Notification.permission === 'granted') {
+      new Notification(title, {
+        body,
+        icon: '/icons/icon512_rounded.png',
+        badge: '/icons/ticket.ico',
+      });
+    } else if (Notification.permission !== 'denied') {
+      Notification.requestPermission().then((permission) => {
+        if (permission === 'granted') {
+          new Notification(title, {
+            body,
+            icon: '/assets/icon512_rounded.png',
+            badge: '/icons/ticket.ico',
+          });
+        }
+      });
+    }
   }
 
   isWinning(i: number) {
