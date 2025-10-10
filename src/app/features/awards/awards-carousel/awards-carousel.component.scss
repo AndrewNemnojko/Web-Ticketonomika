@@ -41,21 +41,22 @@ h3.title {
   filter: brightness(1);
   &.df-l3{
     //border: 2px solid #3a3a8491;
-    background: linear-gradient(17deg, #34632a9e 1%, #ffffff0d 70%);
+    background: linear-gradient(45deg, #3f7a32ad 8%, #ffffff0d 0%);
   }
   &.cu-l3{
     //border: 2px solid #825d5494;
-    background: linear-gradient(17deg, #553466a3 1%, #ffffff0d 70%);
+    background: linear-gradient(45deg, #704188b0 8%, #ffffff0d 0%);
   } 
   &.so-l3{
     //border: 2px solid #876e2191;
-    background: linear-gradient(17deg, #1e317a91 1%, #ffffff0d 70%);
+    background: linear-gradient(45deg, #233a96a2 8%, #ffffff0d 0%);
   }
 
 
   &:hover{
     cursor: pointer;
     filter: brightness(0.9);
+    border: 2px solid #5d5c6f;
   }
   .icon {
     font-size: 25px;

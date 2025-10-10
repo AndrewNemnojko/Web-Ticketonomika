@@ -1,0 +1,30 @@
+<section class="card dodep">
+  <header class="header">
+    <h2>💸 Dodep & Chill</h2>
+    <p class="subtitle">Кожен клік — мінус депозит, але плюс досвід 😎</p>
+  </header>
+
+  <div class="balance-block">
+    <div class="value">
+      <h4>Баланс</h4>
+      <h3>{{ balance | number:'1.2-2' }} TCT</h3>
+    </div>
+    <div class="value">
+      <h4>Стратегія</h4>
+      <p>{{ strategy }}</p>
+    </div>
+    <div class="value">
+      <h4>Настрій ринку</h4>
+      <p>{{ mood }}</p>
+    </div>
+  </div>
+
+  <button class="btn" (click)="onDeposit()">🚀 Додепнути ще</button>
+
+
+  <footer>
+    <p class="note">
+      *Не фінансова порада, але якшо шо — до місяця разом 🌕
+    </p>
+  </footer>
+</section>

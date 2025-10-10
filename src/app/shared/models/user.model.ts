@@ -1,6 +1,6 @@
 import { Award } from './award.model';
 import { Job } from './job.model';
-import { Material } from './material.model';
+import { MaterialBalance } from './material-balance.model';
 
 export interface User {
   id: string;
@@ -10,7 +10,7 @@ export interface User {
   passportId: string;
   legalStatus: string;
   tickets: number;
-  materials: Material[];
+  materials: MaterialBalance[];
   awards: Award[];
   jobs: Job[];
 }

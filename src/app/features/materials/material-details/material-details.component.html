@@ -1,0 +1,21 @@
+
+<div class="material-card">
+    @if(material){
+        <img
+            class="icon"
+            [src]="material.name | iconMaterial"
+            alt="{{ material.name }}"
+        />
+        <h4>{{material.name}}</h4>
+        <p>На балансі: {{material.amount}} шт.</p>
+        <p>Ціна на біржі: {{material.price}} tc</p>
+        <p>Балансова вартість: {{calcSum(material.amount, material.price)}} tc</p>
+    }
+    @else {
+        <p>Помилка завантаження. Сумно, сумно аж за край!</p>
+    }
+</div>
+<div class="btns">
+    <button routerLink="materials">Матеріали</button>
+    <button routerLink="market">Біржа</button>
+</div>

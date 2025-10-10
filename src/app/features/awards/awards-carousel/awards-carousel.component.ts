@@ -39,7 +39,7 @@ export class AwardsCarouselComponent implements AfterViewInit, OnDestroy {
       .subscribe(result => {
         if (result) console.log('Saved name:', result);
       });
-  }
+    }
   ngAfterViewInit() {
     this.updateVisibleCount();
     window.addEventListener('resize', this.resizeHandler);

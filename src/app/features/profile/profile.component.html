@@ -40,16 +40,16 @@
         <h3 class="title">Матеріали</h3>
         <ul class="materials-list">
           @for (mat of u.materials; track mat.name) {
-            <li class="material">
+            <li (click)="open(mat)" class="material">
               <img
                 class="icon"
                 [src]="mat.name | iconMaterial"
                 alt="{{ mat.name }}"
               />
               <div class="display">
-                <a href="/materials/{{ mat.name }}.png" class="name">{{
+                <span  class="name">{{
                   mat.name
-                }}</a>
+                }}</span>
                 <span class="amount">{{ mat.amount }}</span>
               </div>
             </li>

@@ -1,0 +1,17 @@
+<section class="materials-info-page">
+  <header>
+    <h2>💎 Матеріали</h2>
+    <p class="subtitle">Інформація про всі доступні матеріали</p>
+  </header>
+
+  <div class="materials-grid">
+    @for (m of materials; track m.name) {
+      <article class="material-card">
+        <img class="icon" [src]="m.name | iconMaterial" alt="{{ m.name }}" />
+        <h4>{{ m.name }}</h4>
+        <p class="price">Ціна: {{ m.price.toFixed(2) }} tc</p>
+        <p class="description">{{ m.description }}</p>
+      </article>
+    }
+  </div>
+</section>

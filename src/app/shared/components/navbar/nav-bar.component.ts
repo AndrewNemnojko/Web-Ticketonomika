@@ -58,14 +58,14 @@ export class NavBarComponent {
       icon: '/svg/material.svg',
       route: 'materials',
       authOnly: true,
-      open: false,
+      open: true,
     },
     {
       label: 'Біржа',
       icon: '/svg/market.svg',
       route: 'market',
       authOnly: true,
-      open: false,
+      open: true,
     },
     {
       label: 'Казино',

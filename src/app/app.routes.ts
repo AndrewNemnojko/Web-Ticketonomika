@@ -7,6 +7,8 @@ import { NotfoundComponent } from './features/errors/notfound.component';
 import { LayoutComponent } from './shared/components/layout/layout.component';
 import { ForbiddenComponent } from './features/errors/forbidden.component';
 import { ServerErrorComponent } from './features/errors/server-error.component';
+import { MaterialsPageComponent } from './features/materials/materials-page/materials-page.component';
+import { MarketPageComponent } from './features/market/market-page/market-page.component';
 
 export const routes: Routes = [
   {
@@ -32,6 +34,16 @@ export const routes: Routes = [
         path: 'drewards',
         component: DrewardComponent,
         data: { title: 'Daily Reward' },
+      },
+      {
+        path: 'materials',
+        component: MaterialsPageComponent,
+        data: { title: 'Materials' },
+      },
+      {
+        path: 'market',
+        component: MarketPageComponent,
+        data: { title: 'Market' },
       },
 
       { path: '', redirectTo: 'info', pathMatch: 'full' },

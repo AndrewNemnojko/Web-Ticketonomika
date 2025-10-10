@@ -88,6 +88,7 @@ export class LayoutComponent implements OnDestroy, OnInit {
     this.navMenuOpen = false;
     this.contextMenuOpen = false;
     document.body.style.overflow = '';
+    this.modal.close();
   }
 
   private ScrollToTop() {

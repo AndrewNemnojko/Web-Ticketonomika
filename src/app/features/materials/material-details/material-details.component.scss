@@ -1,0 +1,45 @@
+.material-card{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+h4 {
+    text-align: center;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #00000036;
+    font-size: 17px;
+}
+
+p {
+    font-size: 14px;
+}
+
+
+img{
+    object-fit: contain;
+    height: 70px;
+    width: 100%;
+}
+
+.btns {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    button {
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.168627451);
+        font-size: 15px;
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0);
+        border-radius: 10px;
+        transition: all 0.2s ease-in-out;
+        &:hover{
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.0470588235);
+        }
+    }
+}
