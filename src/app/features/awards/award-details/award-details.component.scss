@@ -1,14 +1,24 @@
+.award-card{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 h4.award-name {
     text-align: center;
     border-radius: 10px;
     padding: 5px;
     background-color: #00000036;
     font-size: 17px;
+    .code{
+        margin-bottom: 5px;
+    }
+    .name{
+        font-size: 15px;
+    }
 }
 
 span.award-date {
     font-size: 13px;
-    padding: 10px 0px;
     color: #bebebe;
     display: block;
     width: 100%;
@@ -16,5 +26,5 @@ span.award-date {
 }
 
 p.award-description {
-    font-size: 15px;
+    font-size: 14px;
 }

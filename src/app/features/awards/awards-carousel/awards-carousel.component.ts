@@ -110,7 +110,14 @@ export class AwardsCarouselComponent implements AfterViewInit, OnDestroy {
   }
 
   displayTitle(award: Award) {
-    const first = (award.name || '').split(' ')[0];
-    return award.name?.replace(first, '').trim();
+    //const first = (award.name || '').split(' ')[0];
+    //return award.name?.replace(first, '').trim();
+    const first = (award.name || '').split(']')[1];
+    return first;
+  }
+
+  getCode(award: string): string {
+    const match = award.match(/\[(.*?)\]/); 
+    return match ? match[1].toLowerCase() : '';
   }
 }

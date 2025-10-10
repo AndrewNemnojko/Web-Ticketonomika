@@ -21,10 +21,11 @@ import { Subject } from 'rxjs';
       text-align: center;
     }
     .buttons {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       justify-content: center;
-      gap: 1rem;
-      margin-top: 1rem;
+      gap: 10px;
+      margin-top: 20px;
     }
     h3{
       background-color: #0000003b;

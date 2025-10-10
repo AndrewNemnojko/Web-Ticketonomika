@@ -11,11 +11,11 @@
 
     <div class="carousel-wrapper" #carousel>
       @for (award of awards; track award.id) {
-        <div (click)="open(award)" class="card">
-          <div class="icon">{{ award.name.split(" ")[0] }}</div>
+        <div (click)="open(award)" class="card" [class]="getCode(award.name)">
+          <div class="icon">{{ award.name.split(" ")[0] }} </div>
 
           <div class="content">
-            <h3 class="name">{{ displayTitle(award) }}</h3>
+            <h3 class="name">{{ displayTitle(award) }} </h3>
             <p class="date">{{ award.issuance | date: "dd.MM.yyyy" }}</p>
           </div>
         </div>

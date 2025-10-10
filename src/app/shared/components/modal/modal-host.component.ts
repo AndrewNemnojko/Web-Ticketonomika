@@ -34,6 +34,7 @@ import { Subject } from 'rxjs';
 
     .modal {
       position: fixed;
+      border: 2px solid #ffffff2b;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%) scale(0.95);

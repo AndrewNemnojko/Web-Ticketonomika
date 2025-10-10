@@ -28,6 +28,13 @@
       </div>
     </article>
 
+    
+
+    <app-awards-carousel
+      [awards]="user.awards"
+      class="awards"
+    ></app-awards-carousel>
+
     @if (u.materials!.length) {
       <section class="card materials">
         <h3 class="title">Матеріали</h3>
@@ -50,11 +57,6 @@
         </ul>
       </section>
     }
-
-    <app-awards-carousel
-      [awards]="user.awards"
-      class="awards"
-    ></app-awards-carousel>
 
     @if (u.jobs!.length) {
       <section class="card jobs">

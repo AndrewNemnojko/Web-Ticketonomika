@@ -1,11 +1,13 @@
 
 @if (award) {
-  <div class="award-card">
-    <div class="award-header">
-      <h4 class="award-name">{{ award.name }}</h4>
-      <span class="award-date">Дата видачі: {{ award.issuance | date:'mediumDate' }}</span>
-    </div>
+  <div class="award-card">  
+    <h4 class="award-name">
+      <p class="code">{{ getCode(award.name) }}</p>
+      <p class="name">{{ getName(award.name) }}</p>
+    </h4>
+    
     <p class="award-description">{{ award.description }}</p>
+    <span class="award-date">Дата видачі: {{ award.issuance | date:'mediumDate' }}</span>
   </div>
 } 
 @else {
