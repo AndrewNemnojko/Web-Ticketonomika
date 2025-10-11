@@ -6,8 +6,10 @@
     <nav>
       <div class="context-menu">       
         @if (isAuthenticated) {
+          <button class="box" (click)="openBox()" [class.avalible]="rewardAvalible()">
+            <img src="svg/box.svg">T-Box
+          </button>
           <a class="profile" routerLink="/profile" routerLinkActive="active-link">
-
             <img src="/svg/person.svg" />
             Профіль
           </a>

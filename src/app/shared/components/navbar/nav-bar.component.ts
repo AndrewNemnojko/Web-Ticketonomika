@@ -1,9 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { NavLink } from '../../models/nav-link.model';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { ModalService } from '../modal/modal.service';
 import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
+import { DrewardService } from '../../../features/dreward/services/dreward.service';
+import { TodayRewardComponent } from '../../../features/dreward/components/today-reward/today-reward.component';
 
 @Component({
   selector: 'app-nav-bar',
@@ -14,12 +16,27 @@ import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component'
 export class NavBarComponent {
   private router = inject(Router);
   private authService = inject(AuthService);
+  private rewardsService = inject(DrewardService);
   isAuth = false;
+  rewardAvalible = signal<boolean>(false);
 
   constructor(private modal: ModalService) {
     this.authService.isAuthenticated$.subscribe((isAuth) => {
       this.isAuth = isAuth;
       console.log(isAuth);
+    });
+    
+  }
+
+  async ngOnInit(){
+    const available = await this.rewardsService.isBoxAvailable();
+    this.rewardAvalible.set(available);
+  }
+
+  openBox(){
+    this.modal.open(TodayRewardComponent, undefined ,false, "100%")
+      .subscribe(result => {
+        if (result) console.log('Saved name:', result);
     });
   }
 
@@ -38,14 +55,9 @@ export class NavBarComponent {
     });
   }
 
+
+
   links: NavLink[] = [
-    {
-      label: 'Щоденний бокс',
-      icon: '/svg/box.svg',
-      route: 'drewards',
-      authOnly: true,
-      open: true,
-    },
     {
       label: 'Рейтинги',
       icon: '/svg/stat.svg',

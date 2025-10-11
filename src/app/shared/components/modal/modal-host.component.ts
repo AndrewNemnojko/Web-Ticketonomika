@@ -16,7 +16,12 @@ import { Subject } from 'rxjs';
   imports: [CommonModule],
   template: `
     <div class="backdrop" [class.visible]="isVisible" (click)="close()"></div>
-    <div class="modal" [class.visible]="isVisible">
+    <div 
+      class="modal" 
+      [class.visible]="isVisible"
+      [class.with-body]="modalBody"
+      [style.max-width]="maxWidth"
+    >
       <ng-template #container></ng-template>
     </div>
   `,
@@ -29,28 +34,38 @@ import { Subject } from 'rxjs';
       opacity: 0;
       transition: all 0.3s ease;
       z-index: 20;
+      padding: 20px;
     }
     .backdrop.visible { opacity: 1; }
 
     .modal {
       position: fixed;
-      border: 2px solid #ffffff2b;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%) scale(0.95);
-      background: #2b2d4c;
-      padding: 20px;
+      transform: translate(-50%, -50%) scale(0.95); 
       border-radius: 20px;
       min-width: 300px;
-      max-width: 400px;
       min-height: 140px;
       max-height: calc(100dvh - 100px);
       overflow-y: auto;
       opacity: 0;
-      transition: all 0.3s ease;
+      transition: background 0.3s ease, border 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
       z-index: 1000;
+      border: 2px solid #ffffff00;
+      &.with-body{
+        background: #2b2d4c; 
+        padding: 20px;
+        border: 2px solid #ffffff2b;
+        &.visible{
+          opacity: 1; 
+          transform: translate(-50%, -50%) scale(1) ;
+        }
+      }
+      &.visible{
+        opacity: 1; 
+        transform: translate(-50%, -50%) scale(1);
+      }
     }
-    .modal.visible { opacity: 1; transform: translate(-50%, -50%) scale(1); }
   `]
 })
 export class ModalHostComponent implements AfterViewInit, OnDestroy {
@@ -58,15 +73,17 @@ export class ModalHostComponent implements AfterViewInit, OnDestroy {
   private componentRef?: ComponentRef<any>;
   private onClose$?: Subject<any>;
   isVisible = false;
-
+  modalBody = true;
+  maxWidth: string = "400px";
   ngAfterViewInit() {
     setTimeout(() => (this.isVisible = true), 10);
   }
 
-  open<T>(component: Type<T>, inputs?: Partial<T>): Subject<any> {
+  open<T>(component: Type<T>, inputs?: Partial<T>, modalBody: boolean = true, width?: string): Subject<any> {
     this.container.clear();
     this.componentRef = this.container.createComponent(component);
-
+    this.modalBody = modalBody;
+    if(width){this.maxWidth = width}
     if (inputs) Object.assign(this.componentRef.instance, inputs);
 
     this.onClose$ = new Subject<any>();

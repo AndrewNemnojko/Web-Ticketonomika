@@ -7,6 +7,7 @@ import { AwardsCarouselComponent } from '../awards/awards-carousel/awards-carous
 import { ModalService } from '../../shared/components/modal/modal.service';
 import { MaterialDetailsComponent } from '../materials/material-details/material-details.component';
 import { MaterialBalance } from '../../shared/models/material-balance.model';
+import { TodayRewardComponent } from '../dreward/components/today-reward/today-reward.component';
 
 @Component({
   selector: 'app-profile',
@@ -51,4 +52,5 @@ export class ProfileComponent implements OnInit, OnDestroy {
         if (result) console.log('Saved name:', result);
     });
   }
+
 }

@@ -11,7 +11,7 @@ export class ModalService {
     private injector: EnvironmentInjector
   ) {}
 
-  open<T>(component: Type<T>, inputs?: Partial<T>): Subject<any> {
+  open<T>(component: Type<T>, inputs?: Partial<T>, modalBody: boolean = true, width?: string): Subject<any> {
     if (this.modalRef) this.close();
 
     this.modalRef = createComponent(ModalHostComponent, {
@@ -24,7 +24,7 @@ export class ModalService {
     const result$ = new Subject<any>();
 
     setTimeout(() => {
-      const modal$ = this.modalRef!.instance.open(component, inputs);
+      const modal$ = this.modalRef!.instance.open(component, inputs, modalBody, width);
       modal$.subscribe(res => {
         result$.next(res);
         result$.complete();

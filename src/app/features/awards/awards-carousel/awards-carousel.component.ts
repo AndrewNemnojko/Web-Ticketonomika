@@ -7,7 +7,6 @@ import {
   OnDestroy,
   NgZone,
 } from '@angular/core';
-import { DatePipe } from '@angular/common';
 import { Award } from '../../../shared/models/award.model';
 import { ModalService } from '../../../shared/components/modal/modal.service';
 import { AwardDetailsComponent } from '../award-details/award-details.component';
@@ -17,7 +16,7 @@ import { AwardDetailsComponent } from '../award-details/award-details.component'
   standalone: true,
   templateUrl: './awards-carousel.component.html',
   styleUrls: ['./awards-carousel.component.scss'],
-  imports: [DatePipe],
+  imports: [],
 })
 export class AwardsCarouselComponent implements AfterViewInit, OnDestroy {
   @Input() awards: Award[] = [];

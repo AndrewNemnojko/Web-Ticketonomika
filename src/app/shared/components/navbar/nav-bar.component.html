@@ -1,4 +1,9 @@
 <nav class="{{ isAuth ? '' : 'unauth' }}">
+  
+  <button class="box" (click)="openBox()" [class.avalible]="rewardAvalible()">
+    <img src="svg/box.svg">T-Box
+  </button>
+
   <div class="context-menu">
     @if (isAuth) {
       <a class="logout" (click)="logout()">

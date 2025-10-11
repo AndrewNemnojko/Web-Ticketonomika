@@ -1,6 +1,4 @@
 <div class="dreward-block">
-  <h3 class="title">Щоденний бокс</h3>
-
   <div class="card today-reward" [class]="StateIsAvalible ? 'available' : ''">
     <div class="slot-container" [class.fade-out]="todayState() === 'done'">
       <div class="border-gradient left"></div>
@@ -40,18 +38,5 @@
       </div>
     }
   </div>
-  <div class="card history-rewards">
-    <h3>Історія відкриттів</h3>
-    <div class="history-strip">
-      @for (r of rewardsHistory(); track $index) {
-        <div class="history-item">
-          <div class="reward">
-            <img src="{{ r.material | iconMaterial }}" />
-            <span>x{{ r.amount }}</span>
-          </div>
-          <p>{{ r.date | date }}</p>
-        </div>
-      }
-    </div>
-  </div>
+  <button class="to-history" (click)="open()"><img src="svg/history.svg"> Історія </button>
 </div>

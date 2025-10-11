@@ -1,34 +1,33 @@
 import { Component, ElementRef, ViewChild, signal } from '@angular/core';
-import { DrewardService } from '../services/dreward.service';
-import { Reward } from '../../../shared/models/reward.model';
-import { IconMaterialPipe } from '../../../shared/pipes/icon-material.pipe';
-import { interval, map, startWith } from 'rxjs';
-import { DatePipe } from '@angular/common';
+import { DrewardService } from '../../services/dreward.service';
+import { Reward } from '../../../../shared/models/reward.model';
+import { IconMaterialPipe } from '../../../../shared/pipes/icon-material.pipe';
+import { ModalService } from '../../../../shared/components/modal/modal.service';
+import { HistoryRewardsComponent } from '../history-rewards/history-rewards.component';
 
 type TodayRewardState = 'available' | 'rolling' | 'done';
 
 @Component({
-  selector: 'app-dreward',
-  templateUrl: './dreward.component.html',
-  styleUrl: './dreward.component.scss',
-  imports: [IconMaterialPipe, DatePipe],
+  selector: 'app-today-reward',
+  templateUrl: './today-reward.component.html',
+  styleUrl: './today-reward.component.scss',
+  imports: [IconMaterialPipe],
 })
-export class DrewardComponent {
+export class TodayRewardComponent {
   todayState = signal<TodayRewardState>('done');
   todayReward = signal<Reward | null>(null);
   rewardsList = signal<Reward[]>([]);
   winningIndex = signal<number | null>(null);
-  rewardsHistory = signal<Reward[]>([]);
+  
 
   @ViewChild('strip') stripRef!: ElementRef<HTMLDivElement>;
 
-  constructor(private drewardService: DrewardService) {}
+  constructor(private drewardService: DrewardService, private modal: ModalService) {}
 
   async ngOnInit() {
     const available = await this.drewardService.isBoxAvailable();
     this.todayState.set(available ? 'available' : 'done');
     this.todayReward.set(await this.drewardService.getTodayReward());
-    this.rewardsHistory.set(await this.drewardService.getRewardsHistory());
   }
 
   get StateIsAvalible() {
@@ -74,35 +73,19 @@ export class DrewardComponent {
       setTimeout(async () => {
         this.todayReward.set(await this.drewardService.getTodayReward());
         this.todayState.set('done');
-        this.showNotification(`🎁 Нагорода отримана!`, `Твоя нагорода: ${this.todayReward()?.material} - ${this.todayReward()?.amount}`);
       }, 600);
     };
   }
 
-  //test
-  private showNotification(title: string, body: string) {
-    if (!('Notification' in window)) return;
-
-    if (Notification.permission === 'granted') {
-      new Notification(title, {
-        body,
-        icon: '/icons/icon512_rounded.png',
-        badge: '/icons/ticket.ico',
-      });
-    } else if (Notification.permission !== 'denied') {
-      Notification.requestPermission().then((permission) => {
-        if (permission === 'granted') {
-          new Notification(title, {
-            body,
-            icon: '/assets/icon512_rounded.png',
-            badge: '/icons/ticket.ico',
-          });
-        }
-      });
-    }
-  }
 
   isWinning(i: number) {
     return i === this.winningIndex();
+  }
+
+  open(){
+    this.modal.open(HistoryRewardsComponent)
+      .subscribe(result => {
+        if (result) console.log('Saved name:', result);
+    });
   }
 }
